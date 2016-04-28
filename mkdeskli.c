@@ -35,19 +35,11 @@ static unsigned short isUseEditor;
 */
 static unsigned char inputFlags;
 //------------------------------------------------------------------------------
-/**
-*   @var static enum InputFlagsEnum
-*   @brief Define shift for operations with inputFlags
+/*
+*   //@struct struct desktopLink
+*   //@brief Define
 */
-enum InputFlagsEnum
-{
-    VERSION = 0,
-    HELP,
-    NAME,
-    PATH,
-    IMAGE,
-    EDITOR
-} typedef InputFlagsEnum;
+ static desklink_t desklink;
 //------------------------------------------------------------------------------
 
 
@@ -104,10 +96,13 @@ inline int isFlag(InputFlagsEnum flag);
 */
 int main(int argc, char* argv[])
 {
+    memset(&desklink, 0, sizeof(desklink_t));
     parsIncomingArg(argc, argv);
-    if (isUseEditor)
-    {
-    }
+
+    printf("[%s]: %-14s %3d\t%-15s\n", APP_NAME, "Flag NAME:", isFlag(NAME), desklink.name);
+    printf("[%s]: %-14s %3d\t%-15s\n", APP_NAME, "Flag PATH:", isFlag(PATH), desklink.appPath);
+    printf("[%s]: %-14s %3d\t%-15s\n", APP_NAME, "Flag IMAGE:", isFlag(IMAGE), desklink.imagePath);
+    printf("[%s]: %-14s %3d\n", APP_NAME, "Flag EDITOR:", isFlag(EDITOR));
 
     exit(EXIT_SUCCESS);
 }
@@ -139,26 +134,41 @@ void parsIncomingArg(int argc, char* argv[])
 
     static char *options_string = "vhn:p:i:u";
 
-    while (1)
+    while ((opt = getopt_long(argc, argv, options_string, long_options, &option_index)) != -1)
     {
-        opt = getopt_long(argc, argv, options_string, long_options, &option_index);
-
         switch (opt)
         {
             case 'v':
                 printf(APP_NAME " version: " APP_VERSION ".\n");
+                exit(EXIT_SUCCESS);
                 break;
             case 'h':
                 phelp(argv[0]);
+                exit(EXIT_SUCCESS);
                 break;
             case 'n':
+                setFlag(NAME);
+                if (optarg)
+                {
+                   strcpy(desklink.name, optarg);
+                }
                 break;
             case 'p':
+                setFlag(PATH);
+                if (optarg)
+                {
+                    strcpy(desklink.appPath, optarg);
+                }
                 break;
             case 'i':
+                setFlag(IMAGE);
+                if (optarg)
+                {
+                    strcpy(desklink.imagePath, optarg);
+                }
                 break;
             case 'u':
-                isUseEditor = 1;
+                setFlag(EDITOR);
                 break;
 
             case '?':
@@ -179,14 +189,11 @@ void phelp(const char* appNameBin)
 {
 
     printf("\n* "APP_NAME " version: " APP_VERSION " \n* (c)" APP_DATE " Dmytro Volovnenko.\n\n");
-   /* printf("                    ----------------------\n");
-    printf("                     Desktop Menus link creator\n");
-    printf("                          ----------------------\n");*/
     printf("                    ----------------------\n");
     printf("                         Make Desktop Links\n");
     printf("                          ----------------------\n");
     printf("* Putting your application in the desktop menus makes more easily.\n\n");
-    printf("* Usage: %s [-vhuni] [-p path] \n", appNameBin);
+    printf("* Usage: %s [-vhuni] [-n <name>][-p <path>] \n", appNameBin);
     printf("   -v --version               show program version and exit\n");
     printf("   -h --help                  display this help and exit\n");
     printf("   -u --use-editor            use default text editor to edit link parameters.\n");
@@ -209,23 +216,26 @@ void useExtEditor(void)
 }
 //------------------------------------------------------------------------------
 /**
-*   @fn void useExtEditor(void)
-*   @brief Function make fork and start external editor (that defined in $EDITOR invorement variable) for editing link parameters.
+*   @fn inline void setFlag(InputFlagsEnum flag)
+*   @brief Set flag in char inputFlags that defined in enum InputFlagsEnum.
+*   @param  flag - flag from InputFlagsEnum
 *   @return void
 */
-void setFlag(InputFlagsEnum flag)
+inline void setFlag(InputFlagsEnum flag)
 {
     inputFlags |= (1 << flag);
 }
 //------------------------------------------------------------------------------
 /**
-*   @fn void useExtEditor(void)
-*   @brief Function make fork and start external editor (that defined in $EDITOR invorement variable) for editing link parameters.
+*   @fn inline int isFlag(InputFlagsEnum flag)
+*   @brief Check needed flag in inputFlags.
+*   @param  flag - flag from InputFlagsEnum
 *   @return void
+*   @return int - boolean value
 */
-int isFlag(InputFlagsEnum flag)
+inline int isFlag(InputFlagsEnum flag)
 {
-    return (inputFlags & (1 << flag));
+    return ((inputFlags >> flag) & 1);
 }
 //------------------------------------------------------------------------------
 
