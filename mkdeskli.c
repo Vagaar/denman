@@ -22,10 +22,34 @@
 #include "include.h"
 
 /**
-*   @var unsigned short isUseEditor
+*   @var static unsigned short isUseEditor
 *   @brief Indicate need or not external editor
 */
-unsigned short isUseEditor = 0;
+static unsigned short isUseEditor;
+//------------------------------------------------------------------------------
+
+/**
+*   @var static unsigned char inputFlags
+*   @brief Indicate what command line arguments be using by user
+*   @brief One flag-per-bit |-|-|-u|-i|-p|-n|-h|-v|
+*/
+static unsigned char inputFlags;
+//------------------------------------------------------------------------------
+/**
+*   @var static enum InputFlagsEnum
+*   @brief Define shift for operations with inputFlags
+*/
+static enum InputFlagsEnum
+{
+    VERSION = 0,
+    HELP,
+    NAME,
+    PATH,
+    IMAGE,
+    EDITOR
+}
+//------------------------------------------------------------------------------
+
 
 /**
 *   @fn void parsIncomingArg(int argc, char* argv[])
@@ -45,7 +69,31 @@ void parsIncomingArg(int argc, char* argv[]);
 */
 void phelp(const char* appNameBin);
 //------------------------------------------------------------------------------
-
+/**
+*   @fn void useExtEditor(void)
+*   @brief Function make fork and start external editor (that defined in $EDITOR invorement variable) for editing link parameters.
+*   @return void
+*/
+void useExtEditor(void);
+//------------------------------------------------------------------------------
+/**
+*   @fn inline void setFlag(InputFlagsEnum flag)
+*   @brief Set flag in char inputFlags that defined in enum InputFlagsEnum.
+*   @param  flag - flag from InputFlagsEnum
+*   @return void
+*/
+inline void setFlag(InputFlagsEnum flag);
+//------------------------------------------------------------------------------
+/**
+*   @fn inline int isFlag(InputFlagsEnum flag)
+*   @brief Check needed flag in inputFlags.
+*   @param  flag - flag from InputFlagsEnum
+*   @return void
+*   @return int - boolean value
+*/
+inline int isFlag(InputFlagsEnum flag);
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 /**
 *   @fn int main(int argc, char* argv[])
@@ -156,6 +204,28 @@ void phelp(const char* appNameBin)
 */
 void useExtEditor(void)
 {
+    pid_t pid = fork();
 
 }
 //------------------------------------------------------------------------------
+/**
+*   @fn void useExtEditor(void)
+*   @brief Function make fork and start external editor (that defined in $EDITOR invorement variable) for editing link parameters.
+*   @return void
+*/
+void setFlag(InputFlagsEnum flag)
+{
+    inputFlags |= (1 << flag);
+}
+//------------------------------------------------------------------------------
+/**
+*   @fn void useExtEditor(void)
+*   @brief Function make fork and start external editor (that defined in $EDITOR invorement variable) for editing link parameters.
+*   @return void
+*/
+int isFlag(InputFlagsEnum flag)
+{
+    return (inputFlags & (1 << flag));
+}
+//------------------------------------------------------------------------------
+
