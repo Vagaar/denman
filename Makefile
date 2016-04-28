@@ -10,6 +10,8 @@ all:
 	$(CC) $(SOURCES) -o $(BUILD)$(OBJ)
 	#mv $(OBJ) $(BUILD)
 	@echo "Make finished"
+compile:
+	$(CC) -S $(SOURCES)
 
 clean :
 	rm -f *.o $(BUILD)$(OBJ)
