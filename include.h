@@ -7,8 +7,12 @@
 //includes
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
+#include <unistd.h>
 #include <getopt.h>
+
+#include <limits.h>
 
 //-----------------------------------------------------
 //defines
@@ -17,5 +21,39 @@
 #define APP_DATE        "2016"
 #define APP_NAME        "MkDeskLi"
 //-----------------------------------------------------
+
+/*
+*   //@enum enum InputFlagsEnum
+*   @brief Define shift for operations with inputFlags
+*   @typedef typedef enum InputFlagsEnum InputFlagsEnum
+*   @brief typedef enum InputFlagsEnum to InputFlagsEnum
+*/
+enum InputFlagsEnum
+{
+    VERSION = 0,
+    HELP,
+    NAME,
+    PATH,
+    IMAGE,
+    EDITOR
+};
+
+typedef enum InputFlagsEnum InputFlagsEnum;
+//------------------------------------------------------------------------------
+/*
+*   //@struct struct desktopLink
+*   @brief Define
+*   @typedef typedef desktopLink desklink_t
+*   @brief typedef desktopLink to desklink_t
+*/
+struct desklink_t
+{
+    char name[NAME_MAX];
+    char appPath[PATH_MAX];
+    char imagePath[PATH_MAX];
+
+};
+typedef struct desklink_t desklink_t;
+//------------------------------------------------------------------------------
 
 #endif // INCLUDE_H_INCLUDED
