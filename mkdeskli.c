@@ -39,7 +39,7 @@ static unsigned char inputFlags;
 *   @var static enum InputFlagsEnum
 *   @brief Define shift for operations with inputFlags
 */
-static enum InputFlagsEnum
+enum InputFlagsEnum
 {
     VERSION = 0,
     HELP,
@@ -47,7 +47,7 @@ static enum InputFlagsEnum
     PATH,
     IMAGE,
     EDITOR
-}
+} typedef InputFlagsEnum;
 //------------------------------------------------------------------------------
 
 
