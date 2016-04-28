@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['useexteditor',['useExtEditor',['../mkdeskli_8c.html#adfb97b9995a0fb9563494eef7b0615ae',1,'mkdeskli.c']]]
+  ['parsincomingarg',['parsIncomingArg',['../mkdeskli_8c.html#af87e0443788023a5e83268ec012ce4b9',1,'mkdeskli.c']]],
+  ['phelp',['phelp',['../mkdeskli_8c.html#ac343466de5c71f3e75fe12fe60c84411',1,'mkdeskli.c']]]
 ];

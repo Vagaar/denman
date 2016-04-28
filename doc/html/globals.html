@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -68,7 +69,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li class="current"><a href="globals.html"><span>All</span></a></li>
       <li><a href="globals_func.html"><span>Functions</span></a></li>
-      <li><a href="globals_vars.html"><span>Variables</span></a></li>
+      <li><a href="globals_type.html"><span>Typedefs</span></a></li>
+      <li><a href="globals_enum.html"><span>Enumerations</span></a></li>
+      <li><a href="globals_eval.html"><span>Enumerator</span></a></li>
       <li><a href="globals_defs.html"><span>Macros</span></a></li>
     </ul>
   </div>
@@ -78,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -98,26 +101,53 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>APP_VERSION
 : <a class="el" href="include_8h.html#a92673e33f27532767749b79edb8ef806">include.h</a>
 </li>
-<li>isUseEditor
-: <a class="el" href="mkdeskli_8c.html#aa22b3ae937bd8c5ac26ecf24603db5f1">mkdeskli.c</a>
+<li>desklink_t
+: <a class="el" href="mkdeskli_8c.html#a67f1628a77c3e3d9b7b4bfab34f285c0">mkdeskli.c</a>
+</li>
+<li>EDITOR
+: <a class="el" href="mkdeskli_8c.html#ae3cad780b8f3f34297941ce383b8a287acd88c7ae2b15e95f236caae09eaa1f56">mkdeskli.c</a>
+</li>
+<li>HELP
+: <a class="el" href="mkdeskli_8c.html#ae3cad780b8f3f34297941ce383b8a287a9f5cb747b2e1f0ea781d2b1f2a5b4824">mkdeskli.c</a>
+</li>
+<li>IMAGE
+: <a class="el" href="mkdeskli_8c.html#ae3cad780b8f3f34297941ce383b8a287a3501d25cdde2b141c20edb67965fb692">mkdeskli.c</a>
+</li>
+<li>InputFlagsEnum
+: <a class="el" href="mkdeskli_8c.html#ae3cad780b8f3f34297941ce383b8a287">mkdeskli.c</a>
+</li>
+<li>isFlag()
+: <a class="el" href="mkdeskli_8c.html#abb3a7dd8cf1bbcc20ef938da88121126">mkdeskli.c</a>
 </li>
 <li>main()
 : <a class="el" href="mkdeskli_8c.html#a0ddf1224851353fc92bfbff6f499fa97">mkdeskli.c</a>
 </li>
+<li>NAME
+: <a class="el" href="mkdeskli_8c.html#ae3cad780b8f3f34297941ce383b8a287a67bc2ced260a8e43805d2480a785d312">mkdeskli.c</a>
+</li>
 <li>parsIncomingArg()
 : <a class="el" href="mkdeskli_8c.html#af87e0443788023a5e83268ec012ce4b9">mkdeskli.c</a>
+</li>
+<li>PATH
+: <a class="el" href="mkdeskli_8c.html#ae3cad780b8f3f34297941ce383b8a287ad67a493278074cf714b262b33d84739c">mkdeskli.c</a>
 </li>
 <li>phelp()
 : <a class="el" href="mkdeskli_8c.html#ac343466de5c71f3e75fe12fe60c84411">mkdeskli.c</a>
 </li>
+<li>setFlag()
+: <a class="el" href="mkdeskli_8c.html#a10f490ddab0c2fcf167414f985a1cdbc">mkdeskli.c</a>
+</li>
 <li>useExtEditor()
 : <a class="el" href="mkdeskli_8c.html#adfb97b9995a0fb9563494eef7b0615ae">mkdeskli.c</a>
+</li>
+<li>VERSION
+: <a class="el" href="mkdeskli_8c.html#ae3cad780b8f3f34297941ce383b8a287a52f49aba124a600ad9581caabe6a099a">mkdeskli.c</a>
 </li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 28 2016 14:51:08 for mkdeskli by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Apr 28 2016 20:41:23 for mkdeskli by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

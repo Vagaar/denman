@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -81,8 +82,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">mkdeskli.c File Reference</div>  </div>
 </div><!--header-->
@@ -97,6 +100,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <p><a href="mkdeskli_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdesklink__t.html">desklink_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a100f6a2b29defda137b746ea76214835"><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="mkdeskli_8c.html#ae3cad780b8f3f34297941ce383b8a287">InputFlagsEnum</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mkdeskli_8c.html#a100f6a2b29defda137b746ea76214835">InputFlagsEnum</a></td></tr>
+<tr class="separator:a100f6a2b29defda137b746ea76214835"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67f1628a77c3e3d9b7b4bfab34f285c0"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structdesklink__t.html">desklink_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mkdeskli_8c.html#a67f1628a77c3e3d9b7b4bfab34f285c0">desklink_t</a></td></tr>
+<tr class="separator:a67f1628a77c3e3d9b7b4bfab34f285c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ae3cad780b8f3f34297941ce383b8a287"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mkdeskli_8c.html#ae3cad780b8f3f34297941ce383b8a287">InputFlagsEnum</a> { <br/>
+&#160;&#160;<a class="el" href="mkdeskli_8c.html#ae3cad780b8f3f34297941ce383b8a287a52f49aba124a600ad9581caabe6a099a">VERSION</a> = 0, 
+<a class="el" href="mkdeskli_8c.html#ae3cad780b8f3f34297941ce383b8a287a9f5cb747b2e1f0ea781d2b1f2a5b4824">HELP</a>, 
+<a class="el" href="mkdeskli_8c.html#ae3cad780b8f3f34297941ce383b8a287a67bc2ced260a8e43805d2480a785d312">NAME</a>, 
+<a class="el" href="mkdeskli_8c.html#ae3cad780b8f3f34297941ce383b8a287ad67a493278074cf714b262b33d84739c">PATH</a>, 
+<br/>
+&#160;&#160;<a class="el" href="mkdeskli_8c.html#ae3cad780b8f3f34297941ce383b8a287a3501d25cdde2b141c20edb67965fb692">IMAGE</a>, 
+<a class="el" href="mkdeskli_8c.html#ae3cad780b8f3f34297941ce383b8a287acd88c7ae2b15e95f236caae09eaa1f56">EDITOR</a>
+<br/>
+ }</td></tr>
+<tr class="separator:ae3cad780b8f3f34297941ce383b8a287"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:af87e0443788023a5e83268ec012ce4b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mkdeskli_8c.html#af87e0443788023a5e83268ec012ce4b9">parsIncomingArg</a> (int argc, char *argv[])</td></tr>
@@ -105,18 +134,18 @@ Functions</h2></td></tr>
 <tr class="memitem:ac343466de5c71f3e75fe12fe60c84411"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mkdeskli_8c.html#ac343466de5c71f3e75fe12fe60c84411">phelp</a> (const char *appNameBin)</td></tr>
 <tr class="memdesc:ac343466de5c71f3e75fe12fe60c84411"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function for printin help to stdout.  <a href="#ac343466de5c71f3e75fe12fe60c84411">More...</a><br/></td></tr>
 <tr class="separator:ac343466de5c71f3e75fe12fe60c84411"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mkdeskli_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
-<tr class="memdesc:a0ddf1224851353fc92bfbff6f499fa97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main - entery point of application.  <a href="#a0ddf1224851353fc92bfbff6f499fa97">More...</a><br/></td></tr>
-<tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfb97b9995a0fb9563494eef7b0615ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mkdeskli_8c.html#adfb97b9995a0fb9563494eef7b0615ae">useExtEditor</a> (void)</td></tr>
 <tr class="memdesc:adfb97b9995a0fb9563494eef7b0615ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function make fork and start external editor (that defined in $EDITOR invorement variable) for editing link parameters.  <a href="#adfb97b9995a0fb9563494eef7b0615ae">More...</a><br/></td></tr>
 <tr class="separator:adfb97b9995a0fb9563494eef7b0615ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:aa22b3ae937bd8c5ac26ecf24603db5f1"><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mkdeskli_8c.html#aa22b3ae937bd8c5ac26ecf24603db5f1">isUseEditor</a> = 0</td></tr>
-<tr class="memdesc:aa22b3ae937bd8c5ac26ecf24603db5f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicate need or not external editor.  <a href="#aa22b3ae937bd8c5ac26ecf24603db5f1">More...</a><br/></td></tr>
-<tr class="separator:aa22b3ae937bd8c5ac26ecf24603db5f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10f490ddab0c2fcf167414f985a1cdbc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mkdeskli_8c.html#a10f490ddab0c2fcf167414f985a1cdbc">setFlag</a> (<a class="el" href="mkdeskli_8c.html#ae3cad780b8f3f34297941ce383b8a287">InputFlagsEnum</a> flag)</td></tr>
+<tr class="memdesc:a10f490ddab0c2fcf167414f985a1cdbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set flag in char inputFlags that defined in enum InputFlagsEnum.  <a href="#a10f490ddab0c2fcf167414f985a1cdbc">More...</a><br/></td></tr>
+<tr class="separator:a10f490ddab0c2fcf167414f985a1cdbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb3a7dd8cf1bbcc20ef938da88121126"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mkdeskli_8c.html#abb3a7dd8cf1bbcc20ef938da88121126">isFlag</a> (<a class="el" href="mkdeskli_8c.html#ae3cad780b8f3f34297941ce383b8a287">InputFlagsEnum</a> flag)</td></tr>
+<tr class="memdesc:abb3a7dd8cf1bbcc20ef938da88121126"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check needed flag in inputFlags.  <a href="#abb3a7dd8cf1bbcc20ef938da88121126">More...</a><br/></td></tr>
+<tr class="separator:abb3a7dd8cf1bbcc20ef938da88121126"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mkdeskli_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
+<tr class="memdesc:a0ddf1224851353fc92bfbff6f499fa97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main - entery point of application.  <a href="#a0ddf1224851353fc92bfbff6f499fa97">More...</a><br/></td></tr>
+<tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><ul>
@@ -124,7 +153,102 @@ Variables</h2></td></tr>
 </ul>
 
 <p>Definition in file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Typedef Documentation</h2>
+<a class="anchor" id="a67f1628a77c3e3d9b7b4bfab34f285c0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structdesklink__t.html">desklink_t</a> <a class="el" href="structdesklink__t.html">desklink_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00069">69</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a100f6a2b29defda137b746ea76214835"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef enum <a class="el" href="mkdeskli_8c.html#ae3cad780b8f3f34297941ce383b8a287">InputFlagsEnum</a> <a class="el" href="mkdeskli_8c.html#ae3cad780b8f3f34297941ce383b8a287">InputFlagsEnum</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00054">54</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="ae3cad780b8f3f34297941ce383b8a287"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="mkdeskli_8c.html#ae3cad780b8f3f34297941ce383b8a287">InputFlagsEnum</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="ae3cad780b8f3f34297941ce383b8a287a52f49aba124a600ad9581caabe6a099a"></a>VERSION</em>&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ae3cad780b8f3f34297941ce383b8a287a9f5cb747b2e1f0ea781d2b1f2a5b4824"></a>HELP</em>&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ae3cad780b8f3f34297941ce383b8a287a67bc2ced260a8e43805d2480a785d312"></a>NAME</em>&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ae3cad780b8f3f34297941ce383b8a287ad67a493278074cf714b262b33d84739c"></a>PATH</em>&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ae3cad780b8f3f34297941ce383b8a287a3501d25cdde2b141c20edb67965fb692"></a>IMAGE</em>&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ae3cad780b8f3f34297941ce383b8a287acd88c7ae2b15e95f236caae09eaa1f56"></a>EDITOR</em>&#160;</td><td class="fielddoc">
+</td></tr>
+</table>
+
+<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00044">44</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="abb3a7dd8cf1bbcc20ef938da88121126"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int isFlag </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="mkdeskli_8c.html#ae3cad780b8f3f34297941ce383b8a287">InputFlagsEnum</a>&#160;</td>
+          <td class="paramname"><em>flag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check needed flag in inputFlags. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flag</td><td>- flag from InputFlagsEnum </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd>
+<dd>
+int - boolean value </dd></dl>
+
+<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00260">260</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a0ddf1224851353fc92bfbff6f499fa97"></a>
 <div class="memitem">
 <div class="memproto">
@@ -159,7 +283,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Exit status </dd></dl>
 
-<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00057">57</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
+<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00124">124</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
 
 </div>
 </div>
@@ -198,7 +322,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
-<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00076">76</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
+<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00152">152</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
 
 </div>
 </div>
@@ -225,7 +349,42 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
-<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00130">130</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
+<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00209">209</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a10f490ddab0c2fcf167414f985a1cdbc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setFlag </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="mkdeskli_8c.html#ae3cad780b8f3f34297941ce383b8a287">InputFlagsEnum</a>&#160;</td>
+          <td class="paramname"><em>flag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set flag in char inputFlags that defined in enum InputFlagsEnum. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flag</td><td>- flag from InputFlagsEnum </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00248">248</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
 
 </div>
 </div>
@@ -246,31 +405,14 @@ Variables</h2></td></tr>
 <p>Function make fork and start external editor (that defined in $EDITOR invorement variable) for editing link parameters. </p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
-<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00157">157</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a class="anchor" id="aa22b3ae937bd8c5ac26ecf24603db5f1"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned short isUseEditor = 0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Indicate need or not external editor. </p>
-
-<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00028">28</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
+<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00236">236</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 28 2016 14:51:08 for mkdeskli by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Apr 28 2016 20:41:23 for mkdeskli by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

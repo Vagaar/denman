@@ -10,6 +10,31 @@
 
 
 {\ttfamily \#include \char`\"{}include.\-h\char`\"{}}\\*
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structdesklink__t}{desklink\-\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \hyperlink{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287}{Input\-Flags\-Enum} \hyperlink{mkdeskli_8c_a100f6a2b29defda137b746ea76214835}{Input\-Flags\-Enum}
+\item 
+typedef struct \hyperlink{structdesklink__t}{desklink\-\_\-t} \hyperlink{mkdeskli_8c_a67f1628a77c3e3d9b7b4bfab34f285c0}{desklink\-\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287}{Input\-Flags\-Enum} \{ \\*
+\hyperlink{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287a52f49aba124a600ad9581caabe6a099a}{V\-E\-R\-S\-I\-O\-N} = 0, 
+\hyperlink{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287a9f5cb747b2e1f0ea781d2b1f2a5b4824}{H\-E\-L\-P}, 
+\hyperlink{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287a67bc2ced260a8e43805d2480a785d312}{N\-A\-M\-E}, 
+\hyperlink{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287ad67a493278074cf714b262b33d84739c}{P\-A\-T\-H}, 
+\\*
+\hyperlink{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287a3501d25cdde2b141c20edb67965fb692}{I\-M\-A\-G\-E}, 
+\hyperlink{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287acd88c7ae2b15e95f236caae09eaa1f56}{E\-D\-I\-T\-O\-R}
+ \}
+\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -17,15 +42,14 @@ void \hyperlink{mkdeskli_8c_af87e0443788023a5e83268ec012ce4b9}{pars\-Incoming\-A
 \begin{DoxyCompactList}\small\item\em Function for parsing incoming arguments that providing through command line. \end{DoxyCompactList}\item 
 void \hyperlink{mkdeskli_8c_ac343466de5c71f3e75fe12fe60c84411}{phelp} (const char $\ast$app\-Name\-Bin)
 \begin{DoxyCompactList}\small\item\em Function for printin help to stdout. \end{DoxyCompactList}\item 
-int \hyperlink{mkdeskli_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
-\begin{DoxyCompactList}\small\item\em Main -\/ entery point of application. \end{DoxyCompactList}\item 
 void \hyperlink{mkdeskli_8c_adfb97b9995a0fb9563494eef7b0615ae}{use\-Ext\-Editor} (void)
-\begin{DoxyCompactList}\small\item\em Function make fork and start external editor (that defined in \$\-E\-D\-I\-T\-O\-R invorement variable) for editing link parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Variables}
-\begin{DoxyCompactItemize}
-\item 
-unsigned short \hyperlink{mkdeskli_8c_aa22b3ae937bd8c5ac26ecf24603db5f1}{is\-Use\-Editor} = 0
-\begin{DoxyCompactList}\small\item\em Indicate need or not external editor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Function make fork and start external editor (that defined in \$\-E\-D\-I\-T\-O\-R invorement variable) for editing link parameters. \end{DoxyCompactList}\item 
+void \hyperlink{mkdeskli_8c_a10f490ddab0c2fcf167414f985a1cdbc}{set\-Flag} (\hyperlink{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287}{Input\-Flags\-Enum} flag)
+\begin{DoxyCompactList}\small\item\em Set flag in char input\-Flags that defined in enum Input\-Flags\-Enum. \end{DoxyCompactList}\item 
+int \hyperlink{mkdeskli_8c_abb3a7dd8cf1bbcc20ef938da88121126}{is\-Flag} (\hyperlink{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287}{Input\-Flags\-Enum} flag)
+\begin{DoxyCompactList}\small\item\em Check needed flag in input\-Flags. \end{DoxyCompactList}\item 
+int \hyperlink{mkdeskli_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Main -\/ entery point of application. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -38,7 +62,76 @@ Definition in file \hyperlink{mkdeskli_8c_source}{mkdeskli.\-c}.
 
 
 
+\subsection{Typedef Documentation}
+\hypertarget{mkdeskli_8c_a67f1628a77c3e3d9b7b4bfab34f285c0}{\index{mkdeskli.\-c@{mkdeskli.\-c}!desklink\-\_\-t@{desklink\-\_\-t}}
+\index{desklink\-\_\-t@{desklink\-\_\-t}!mkdeskli.c@{mkdeskli.\-c}}
+\subsubsection[{desklink\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf desklink\-\_\-t} {\bf desklink\-\_\-t}}}\label{mkdeskli_8c_a67f1628a77c3e3d9b7b4bfab34f285c0}
+
+
+Definition at line 69 of file mkdeskli.\-c.
+
+\hypertarget{mkdeskli_8c_a100f6a2b29defda137b746ea76214835}{\index{mkdeskli.\-c@{mkdeskli.\-c}!Input\-Flags\-Enum@{Input\-Flags\-Enum}}
+\index{Input\-Flags\-Enum@{Input\-Flags\-Enum}!mkdeskli.c@{mkdeskli.\-c}}
+\subsubsection[{Input\-Flags\-Enum}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf Input\-Flags\-Enum} {\bf Input\-Flags\-Enum}}}\label{mkdeskli_8c_a100f6a2b29defda137b746ea76214835}
+
+
+Definition at line 54 of file mkdeskli.\-c.
+
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287}{\index{mkdeskli.\-c@{mkdeskli.\-c}!Input\-Flags\-Enum@{Input\-Flags\-Enum}}
+\index{Input\-Flags\-Enum@{Input\-Flags\-Enum}!mkdeskli.c@{mkdeskli.\-c}}
+\subsubsection[{Input\-Flags\-Enum}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Input\-Flags\-Enum}}}\label{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{V\-E\-R\-S\-I\-O\-N@{V\-E\-R\-S\-I\-O\-N}!mkdeskli.\-c@{mkdeskli.\-c}}\index{mkdeskli.\-c@{mkdeskli.\-c}!V\-E\-R\-S\-I\-O\-N@{V\-E\-R\-S\-I\-O\-N}}\item[{\em 
+\hypertarget{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287a52f49aba124a600ad9581caabe6a099a}{V\-E\-R\-S\-I\-O\-N}\label{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287a52f49aba124a600ad9581caabe6a099a}
+}]\index{H\-E\-L\-P@{H\-E\-L\-P}!mkdeskli.\-c@{mkdeskli.\-c}}\index{mkdeskli.\-c@{mkdeskli.\-c}!H\-E\-L\-P@{H\-E\-L\-P}}\item[{\em 
+\hypertarget{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287a9f5cb747b2e1f0ea781d2b1f2a5b4824}{H\-E\-L\-P}\label{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287a9f5cb747b2e1f0ea781d2b1f2a5b4824}
+}]\index{N\-A\-M\-E@{N\-A\-M\-E}!mkdeskli.\-c@{mkdeskli.\-c}}\index{mkdeskli.\-c@{mkdeskli.\-c}!N\-A\-M\-E@{N\-A\-M\-E}}\item[{\em 
+\hypertarget{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287a67bc2ced260a8e43805d2480a785d312}{N\-A\-M\-E}\label{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287a67bc2ced260a8e43805d2480a785d312}
+}]\index{P\-A\-T\-H@{P\-A\-T\-H}!mkdeskli.\-c@{mkdeskli.\-c}}\index{mkdeskli.\-c@{mkdeskli.\-c}!P\-A\-T\-H@{P\-A\-T\-H}}\item[{\em 
+\hypertarget{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287ad67a493278074cf714b262b33d84739c}{P\-A\-T\-H}\label{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287ad67a493278074cf714b262b33d84739c}
+}]\index{I\-M\-A\-G\-E@{I\-M\-A\-G\-E}!mkdeskli.\-c@{mkdeskli.\-c}}\index{mkdeskli.\-c@{mkdeskli.\-c}!I\-M\-A\-G\-E@{I\-M\-A\-G\-E}}\item[{\em 
+\hypertarget{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287a3501d25cdde2b141c20edb67965fb692}{I\-M\-A\-G\-E}\label{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287a3501d25cdde2b141c20edb67965fb692}
+}]\index{E\-D\-I\-T\-O\-R@{E\-D\-I\-T\-O\-R}!mkdeskli.\-c@{mkdeskli.\-c}}\index{mkdeskli.\-c@{mkdeskli.\-c}!E\-D\-I\-T\-O\-R@{E\-D\-I\-T\-O\-R}}\item[{\em 
+\hypertarget{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287acd88c7ae2b15e95f236caae09eaa1f56}{E\-D\-I\-T\-O\-R}\label{mkdeskli_8c_ae3cad780b8f3f34297941ce383b8a287acd88c7ae2b15e95f236caae09eaa1f56}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 44 of file mkdeskli.\-c.
+
+
+
 \subsection{Function Documentation}
+\hypertarget{mkdeskli_8c_abb3a7dd8cf1bbcc20ef938da88121126}{\index{mkdeskli.\-c@{mkdeskli.\-c}!is\-Flag@{is\-Flag}}
+\index{is\-Flag@{is\-Flag}!mkdeskli.c@{mkdeskli.\-c}}
+\subsubsection[{is\-Flag}]{\setlength{\rightskip}{0pt plus 5cm}int is\-Flag (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\-Flags\-Enum}}]{flag}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{mkdeskli_8c_abb3a7dd8cf1bbcc20ef938da88121126}
+
+
+Check needed flag in input\-Flags. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em flag} & -\/ flag from Input\-Flags\-Enum \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+
+int -\/ boolean value 
+\end{DoxyReturn}
+
+
+Definition at line 260 of file mkdeskli.\-c.
+
 \hypertarget{mkdeskli_8c_a0ddf1224851353fc92bfbff6f499fa97}{\index{mkdeskli.\-c@{mkdeskli.\-c}!main@{main}}
 \index{main@{main}!mkdeskli.c@{mkdeskli.\-c}}
 \subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
@@ -63,7 +156,7 @@ Exit status
 \end{DoxyReturn}
 
 
-Definition at line 57 of file mkdeskli.\-c.
+Definition at line 124 of file mkdeskli.\-c.
 
 \hypertarget{mkdeskli_8c_af87e0443788023a5e83268ec012ce4b9}{\index{mkdeskli.\-c@{mkdeskli.\-c}!pars\-Incoming\-Arg@{pars\-Incoming\-Arg}}
 \index{pars\-Incoming\-Arg@{pars\-Incoming\-Arg}!mkdeskli.c@{mkdeskli.\-c}}
@@ -89,7 +182,7 @@ void
 \end{DoxyReturn}
 
 
-Definition at line 76 of file mkdeskli.\-c.
+Definition at line 152 of file mkdeskli.\-c.
 
 \hypertarget{mkdeskli_8c_ac343466de5c71f3e75fe12fe60c84411}{\index{mkdeskli.\-c@{mkdeskli.\-c}!phelp@{phelp}}
 \index{phelp@{phelp}!mkdeskli.c@{mkdeskli.\-c}}
@@ -112,7 +205,30 @@ void
 \end{DoxyReturn}
 
 
-Definition at line 130 of file mkdeskli.\-c.
+Definition at line 209 of file mkdeskli.\-c.
+
+\hypertarget{mkdeskli_8c_a10f490ddab0c2fcf167414f985a1cdbc}{\index{mkdeskli.\-c@{mkdeskli.\-c}!set\-Flag@{set\-Flag}}
+\index{set\-Flag@{set\-Flag}!mkdeskli.c@{mkdeskli.\-c}}
+\subsubsection[{set\-Flag}]{\setlength{\rightskip}{0pt plus 5cm}void set\-Flag (
+\begin{DoxyParamCaption}
+\item[{{\bf Input\-Flags\-Enum}}]{flag}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{mkdeskli_8c_a10f490ddab0c2fcf167414f985a1cdbc}
+
+
+Set flag in char input\-Flags that defined in enum Input\-Flags\-Enum. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em flag} & -\/ flag from Input\-Flags\-Enum \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Definition at line 248 of file mkdeskli.\-c.
 
 \hypertarget{mkdeskli_8c_adfb97b9995a0fb9563494eef7b0615ae}{\index{mkdeskli.\-c@{mkdeskli.\-c}!use\-Ext\-Editor@{use\-Ext\-Editor}}
 \index{use\-Ext\-Editor@{use\-Ext\-Editor}!mkdeskli.c@{mkdeskli.\-c}}
@@ -130,19 +246,5 @@ void
 \end{DoxyReturn}
 
 
-Definition at line 157 of file mkdeskli.\-c.
-
-
-
-\subsection{Variable Documentation}
-\hypertarget{mkdeskli_8c_aa22b3ae937bd8c5ac26ecf24603db5f1}{\index{mkdeskli.\-c@{mkdeskli.\-c}!is\-Use\-Editor@{is\-Use\-Editor}}
-\index{is\-Use\-Editor@{is\-Use\-Editor}!mkdeskli.c@{mkdeskli.\-c}}
-\subsubsection[{is\-Use\-Editor}]{\setlength{\rightskip}{0pt plus 5cm}unsigned short is\-Use\-Editor = 0}}\label{mkdeskli_8c_aa22b3ae937bd8c5ac26ecf24603db5f1}
-
-
-Indicate need or not external editor. 
-
-
-
-Definition at line 28 of file mkdeskli.\-c.
+Definition at line 236 of file mkdeskli.\-c.
 

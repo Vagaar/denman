@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['parsincomingarg',['parsIncomingArg',['../mkdeskli_8c.html#af87e0443788023a5e83268ec012ce4b9',1,'mkdeskli.c']]],
-  ['phelp',['phelp',['../mkdeskli_8c.html#ac343466de5c71f3e75fe12fe60c84411',1,'mkdeskli.c']]]
+  ['main',['main',['../mkdeskli_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'mkdeskli.c']]]
 ];
