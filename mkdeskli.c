@@ -35,9 +35,14 @@ static unsigned short isUseEditor;
 */
 static unsigned char inputFlags;
 //------------------------------------------------------------------------------
-/*
-*   //@struct struct desktopLink
-*   //@brief Define
+/**
+*   @var static char luncherFileFullPath[PATH_MAX]
+*   @brief Contain full path of launcher .desktop file
+*/
+static char launcherFileFullPath[PATH_MAX];
+//------------------------------------------------------------------------------
+/**
+*   @brief Contain all needed data for creating launcher file
 */
  static desklink_t desklink;
 //------------------------------------------------------------------------------
@@ -85,8 +90,26 @@ inline void setFlag(InputFlagsEnum flag);
 */
 inline int isFlag(InputFlagsEnum flag);
 //------------------------------------------------------------------------------
+/**
+*   @fn int createLinkFile(int flag)
+*   @brief Create or open *.desktop file and write data from desklink_t structere
+*   @param  flag - create/open, rewrite/norewrite
+*   @return int - boolean value
+*/
+int createLinkFile(int flag);
+//------------------------------------------------------------------------------
+/**
+*   @fn void generateFilePath()
+*   @brief Function generate full path to creating .desktop file
+*   @return void
+*/
+void generateFilePath();
 //------------------------------------------------------------------------------
 
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
 /**
 *   @fn int main(int argc, char* argv[])
 *   @brief Main - entery point of application.
@@ -98,11 +121,18 @@ int main(int argc, char* argv[])
 {
     memset(&desklink, 0, sizeof(desklink_t));
     parsIncomingArg(argc, argv);
+    generateFilePath();
 
-    printf("[%s]: %-14s %3d\t%-15s\n", APP_NAME, "Flag NAME:", isFlag(NAME), desklink.name);
-    printf("[%s]: %-14s %3d\t%-15s\n", APP_NAME, "Flag PATH:", isFlag(PATH), desklink.appPath);
-    printf("[%s]: %-14s %3d\t%-15s\n", APP_NAME, "Flag IMAGE:", isFlag(IMAGE), desklink.imagePath);
-    printf("[%s]: %-14s %3d\n", APP_NAME, "Flag EDITOR:", isFlag(EDITOR));
+    printf("[%s]: %-25s %-3d\t%-15s\n", APP_NAME, "Flag NAME:", isFlag(NAME), desklink.name);
+    printf("[%s]: %-25s %-3d\t%-15s\n", APP_NAME, "Flag PATH:", isFlag(PATH), desklink.appPath);
+    printf("[%s]: %-25s %-3d\t%-15s\n", APP_NAME, "Flag IMAGE:", isFlag(IMAGE), desklink.imagePath);
+    printf("[%s]: %-25s %-3d\n", APP_NAME, "Flag EDITOR:", isFlag(EDITOR));
+    printf("[%s]: %-25s %-3d\n", APP_NAME, "Flag USER_ONLY:", isFlag(UONLY));
+    createLinkFile(0);
+    if (isFlag(EDITOR))
+    {
+        useExtEditor();
+    }
 
     exit(EXIT_SUCCESS);
 }
@@ -129,10 +159,11 @@ void parsIncomingArg(int argc, char* argv[])
         {"path",        required_argument,       0, 'p'},
         {"image",       required_argument,       0, 'i'},
         {"use-editor",  no_argument,             0, 'u'},
+        {"user-only",   no_argument,             0, 'o'},
         {0, 0, 0, 0}
     };
 
-    static char *options_string = "vhn:p:i:u";
+    static char *options_string = "vhn:p:i:uo";
 
     while ((opt = getopt_long(argc, argv, options_string, long_options, &option_index)) != -1)
     {
@@ -151,6 +182,7 @@ void parsIncomingArg(int argc, char* argv[])
                 if (optarg)
                 {
                    strcpy(desklink.name, optarg);
+                   //strcat(desklink.name, FILE_TYPE);
                 }
                 break;
             case 'p':
@@ -169,6 +201,9 @@ void parsIncomingArg(int argc, char* argv[])
                 break;
             case 'u':
                 setFlag(EDITOR);
+                break;
+            case 'o':
+                setFlag(UONLY);
                 break;
 
             case '?':
@@ -199,7 +234,8 @@ void phelp(const char* appNameBin)
     printf("   -u --use-editor            use default text editor to edit link parameters.\n");
     printf("   -n --name  < string >      name of application for the main menu\n");
     printf("   -p --path  < path >        path to what execute\n");
-    printf("   -i --image < path >        path to image associated with this application.\n\n");
+    printf("   -i --image < path >        path to image associated with this application.\n");
+    printf("   -o --user-only             make accessible to a single user(don\'t need su permission).\n\n");
 
 
 }
@@ -211,8 +247,23 @@ void phelp(const char* appNameBin)
 */
 void useExtEditor(void)
 {
-    pid_t pid = fork();
+    char *editor = getenv("EDITOR");
+    printf("[%s]: %s\n", APP_NAME, editor);
 
+    if (editor != NULL && (execl("/bin/nano", editor, launcherFileFullPath, NULL)) == -1)
+    {
+        printf("[%s]: %s\n", APP_DATE, editor);
+        perror("execl");
+    }
+    /*
+    char fullpath[PATH_MAX];
+    memset(fullpath, 0, sizeof(fullpath));
+    //readlink(editor, fullpath, strlen(editor));
+    realpath(editor, fullpath);
+    //canonicalize_file_name(editor);
+    printf("[%s]: %s\n", APP_NAME, fullpath);
+    //pid_t pid = fork();
+*/
 }
 //------------------------------------------------------------------------------
 /**
@@ -238,4 +289,99 @@ inline int isFlag(InputFlagsEnum flag)
     return ((inputFlags >> flag) & 1);
 }
 //------------------------------------------------------------------------------
+/**
+*   @fn int createLinkFile(int flag)
+*   @brief Create or open *.desktop file and write data from desklink_t structere
+*   @param  flag - create/open, rewrite/norewrite
+*   @return int - boolean value
+*/
+int createLinkFile(int flag)
+{
+    //isFlag(UONLY)?DESK_DIR_USR:DESK_DIR
+    /*
+   	[Desktop Entry]
+	Name=FooCorp Painter Pro
+	Exec=foocorp-painter-pro
+	Type=Application
+	Categories=GTK;GNOME;Utility
+	Encoding=UTF-8
+    Comment=A sample application
+    Icon=application.png
+    Terminal=false
+
+    */
+
+    /*
+
+    AudioVideo  	Application for presenting, creating, or processing multimedia (audio/video)
+    Development	    An application for development
+    Education	    Educational software
+    Game	        A game
+    Graphics	    Application for viewing, creating, or processing graphics
+    Network	        Network application such as a web browser
+    Office	        An office type application
+    Science	        Scientific software
+    Settings	    Settings applications
+    System	        System application, "System Tools" such as say a log viewer or network monitor
+    Utility         Small utility application, "Accessories"
+    */
+    FILE *fp;
+
+    printf("[%s]: %s\n", APP_NAME,  launcherFileFullPath);
+
+    fp = fopen(launcherFileFullPath, "w");
+    if (fp)
+    {
+        fprintf(fp, "[Desktop Entry]\n");
+        fprintf(fp, "Name=%s\n", desklink.name);
+        fprintf(fp, "Comment=%s\n", desklink.name);
+        fprintf(fp, "Exec=%s\n", desklink.appPath);
+        fprintf(fp, "Icon=%s\n", desklink.imagePath);
+        fprintf(fp, "Terminal=false\n");
+        fprintf(fp, "Type=Application\n");
+        fprintf(fp, "Categories=\n");
+        fclose(fp);
+    }
+    else
+    {
+        perror(PERR_APP"Fail to open file, ");
+    }
+
+    return 0;
+}
+//------------------------------------------------------------------------------
+/**
+*   @fn void generateFilePath()
+*   @brief Function generate full path to creating .desktop file
+*   @return void
+*/
+void generateFilePath()
+{
+    //memset(launcherFileFullPath, 0, sizeof(linkpath));
+    char homeDir[PATH_MAX/2];
+
+    if (isFlag(UONLY))
+    {
+        memset(homeDir, 0, sizeof(homeDir));
+        strcpy(homeDir, getenv("HOME"));
+        if (homeDir == NULL)
+        {
+            perror(PERR_APP"getenv(), ");
+            exit(EXIT_FAILURE);
+        }
+
+        strcat(homeDir, DESKT_DIR_USR);
+        strcpy(launcherFileFullPath, homeDir);
+    }
+    else
+    {
+        strcpy(launcherFileFullPath, DESKT_DIR);
+    }
+
+    strcat(launcherFileFullPath, "/");
+    strcat(launcherFileFullPath, desklink.name);
+    strcat(launcherFileFullPath, FILE_TYPE);
+}
+//------------------------------------------------------------------------------
+
 
