@@ -20,8 +20,12 @@
 #define APP_VERSION     "0.0.1"
 #define APP_DATE        "2016"
 #define APP_NAME        "MkDeskLi"
+#define FILE_TYPE       ".desktop"
+#define DESKT_DIR       "/home/sliderdv/temp" // /usr/share/applications/
+#define DESKT_DIR_USR   "" // ~/.local/share/applications
 //-----------------------------------------------------
-
+#define PERR_APP        "["APP_NAME"]:"
+//-----------------------------------------------------
 /*
 *   //@enum enum InputFlagsEnum
 *   @brief Define shift for operations with inputFlags
@@ -35,7 +39,8 @@ enum InputFlagsEnum
     NAME,
     PATH,
     IMAGE,
-    EDITOR
+    EDITOR,
+    UONLY
 };
 
 typedef enum InputFlagsEnum InputFlagsEnum;
