@@ -23,7 +23,7 @@
 //-----------------------------------------------------
 //defines
 //app info
-#define APP_VERSION     "0.0.1"
+#define APP_VERSION     "0.0.2"
 #define APP_DATE        "2016"
 #define APP_NAME        "MkDeskLi"
 #define FILE_TYPE       ".desktop"
@@ -50,6 +50,9 @@
 #define F_TYPE            "Type="
 #define F_CTEG            "Categories="
 
+#define F_LEN_COMM        1024
+#define F_LEN_TYPE        28
+#define F_LEN_CTEG        28
 //-----------------------------------------------------
 /*
 *   //@enum enum InputFlagsEnum
@@ -59,13 +62,12 @@
 */
 enum InputFlagsEnum
 {
-    VERSION = 0,
-    HELP,
-    NAME,
+    NAME=0,
     PATH,
     IMAGE,
     EDITOR,
-    UONLY
+    UONLY,
+    TERM
 };
 
 typedef enum InputFlagsEnum InputFlagsEnum;
@@ -81,6 +83,10 @@ struct desklink_t
     char name[NAME_MAX];
     char appPath[PATH_MAX];
     char imagePath[PATH_MAX];
+    char comment[F_LEN_COMM];
+    char type[F_LEN_TYPE];
+    char category[F_LEN_CTEG];
+    int terminal;
 
 };
 typedef struct desklink_t desklink_t;
