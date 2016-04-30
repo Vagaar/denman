@@ -130,18 +130,53 @@ int main(int argc, char* argv[])
     parsIncomingArg(argc, argv);
     generateFilePath();
 
-    printf("[%s]: %-25s %-3d\t%-15s\n", APP_NAME, "Flag NAME:", isFlag(NAME), desklink.name);
-    printf("[%s]: %-25s %-3d\t%-15s\n", APP_NAME, "Flag PATH:", isFlag(PATH), desklink.appPath);
-    printf("[%s]: %-25s %-3d\t%-15s\n", APP_NAME, "Flag IMAGE:", isFlag(IMAGE), desklink.imagePath);
-    printf("[%s]: %-25s %-3d\n", APP_NAME, "Flag EDITOR:", isFlag(EDITOR));
-    printf("[%s]: %-25s %-3d\n", APP_NAME, "Flag USER_ONLY:", isFlag(UONLY));
-    //createLinkFile(0);
-    createLaunchFile(0);
-
-    if (isFlag(EDITOR))
+    if (isFlag(NAME))
     {
-        useExtEditor();
+        if (!isFlag(PATH))
+        {
+            printf("Please, set application path: ");
+            scanf("%s", desklink.appPath);
+        }
+        if (!isFlag(IMAGE))
+        {
+            printf("Please, set image path: ");
+            scanf("%s", desklink.imagePath);
+        }
+
+        printf("Please, enter comment for the application: ");
+        scanf("%s", desklink.comment);
+
+        printf("\nApplication categores: \n");
+        printf(     "AudioVideo     Application for presenting, creating, or processing multimedia (audio/video)\n"
+                    "Development    An application for development\n"
+                    "Education      Educational software\n"
+                    "Game           A game\n"
+                    "Graphics       Application for viewing, creating, or processing graphics\n"
+                    "Network        Network application such as a web browser\n"
+                    "Office         An office type application\n"
+                    "Science        Scientific software\n"
+                    "Settings       Settings applications\n"
+                    "System         System application, \"System Tools\" such as say a log viewer or network monitor\n"
+                    "Utility        Small utility application, \"Accessories\"\n\n");
+
+         printf("Please, enter application categores(separate with \';\'): ;\b");
+         scanf("%s", desklink.category);
+
+        createLaunchFile(0);
+
+        if (isFlag(EDITOR))
+        {
+            useExtEditor();
+        }
     }
+    else
+    {
+            printf(PERR_APP" You must set name for file using -n(--name).\n"
+                   PERR_APP" Run with -h(--help) for more information.\n");
+    }
+
+
+
 
     exit(EXIT_SUCCESS);
 }
@@ -169,10 +204,11 @@ void parsIncomingArg(int argc, char* argv[])
         {"image",       required_argument,       0, 'i'},
         {"use-editor",  no_argument,             0, 'u'},
         {"user-only",   no_argument,             0, 'o'},
+        {"terminal",    no_argument,             0, 't'},
         {0, 0, 0, 0}
     };
 
-    static char *options_string = "vhn:p:i:uo";
+    static char *options_string = "vhn:p:i:uot";
 
     while ((opt = getopt_long(argc, argv, options_string, long_options, &option_index)) != -1)
     {
@@ -190,21 +226,23 @@ void parsIncomingArg(int argc, char* argv[])
                 setFlag(NAME);
                 if (optarg)
                 {
-                   strcpy(desklink.name, optarg);
-                   //strcat(desklink.name, FILE_TYPE);
+                    setFlag(NAME);
+                    strcpy(desklink.name, optarg);
                 }
                 break;
             case 'p':
-                setFlag(PATH);
+
                 if (optarg)
                 {
+                    setFlag(PATH);
                     strcpy(desklink.appPath, optarg);
                 }
                 break;
             case 'i':
-                setFlag(IMAGE);
+
                 if (optarg)
                 {
+                    setFlag(IMAGE);
                     strcpy(desklink.imagePath, optarg);
                 }
                 break;
@@ -213,6 +251,10 @@ void parsIncomingArg(int argc, char* argv[])
                 break;
             case 'o':
                 setFlag(UONLY);
+                break;
+            case 't':
+                setFlag(TERM);
+                desklink.terminal = 1;
                 break;
 
             case '?':
@@ -236,15 +278,16 @@ void phelp(const char* appNameBin)
     printf("                    ----------------------\n");
     printf("                         Make Desktop Links\n");
     printf("                          ----------------------\n");
-    printf("* Putting your application in the desktop menus makes more easily.\n\n");
-    printf("* Usage: %s [-vhuni] [-n <name>][-p <path>] \n", appNameBin);
-    printf("   -v --version               show program version and exit\n");
-    printf("   -h --help                  display this help and exit\n");
-    printf("   -u --use-editor            use default text editor to edit link parameters.\n");
-    printf("   -n --name  < string >      name of application for the main menu\n");
-    printf("   -p --path  < path >        path to what execute\n");
-    printf("   -i --image < path >        path to image associated with this application.\n");
-    printf("   -o --user-only             make accessible to a single user(don\'t need su permission).\n\n");
+    printf("          Putting your application in the desktop menus.\n\n");
+    printf("* Usage: %s [options] [-path <path>] [--image <path>] --name <string> \n\n", appNameBin);
+    printf("   -v --version              Show program version and exit\n");
+    printf("   -h --help                 Display this help and exit\n");
+    printf("   -u --use-editor           Use default text editor to edit link parameters.\n");
+    printf("   -n --name  < string >     Name of application for the main menu\n");
+    printf("   -p --path  < path >       Path to what execute\n");
+    printf("   -i --image < path >       Path to image associated with this application.\n");
+    printf("   -o --user-only            Make accessible to a single user(don\'t need su permission).\n");
+    printf("   -t --terminal             Start application in terminal.\n\n");
 
 
 }
@@ -297,42 +340,26 @@ inline int isFlag(InputFlagsEnum flag)
 */
 int createLaunchFile(int flag)
 {
-
-    /*
-
-    AudioVideo  	Application for presenting, creating, or processing multimedia (audio/video)
-    Development	    An application for development
-    Education	    Educational software
-    Game	        A game
-    Graphics	    Application for viewing, creating, or processing graphics
-    Network	        Network application such as a web browser
-    Office	        An office type application
-    Science	        Scientific software
-    Settings	    Settings applications
-    System	        System application, "System Tools" such as say a log viewer or network monitor
-    Utility         Small utility application, "Accessories"
-    */
     FILE *fp;
 
     printf("[%s]: %s\n", APP_NAME,  launcherFileFullPath);
 
     fp = fopen(launcherFileFullPath, "w");
-    int fd = fileno(fp);
 
     if (fp)
     {
-        fprintf(fp, "[Desktop Entry]\n");
-        fprintf(fp, "Name=%s\n", desklink.name);
-        fprintf(fp, "Comment=%s\n", desklink.name);
-        fprintf(fp, "Exec=%s\n", desklink.appPath);
-        fprintf(fp, "Icon=%s\n", desklink.imagePath);
-        fprintf(fp, "Terminal=false\n");
-        fprintf(fp, "Type=Application\n");
-        fprintf(fp, "Categories=\n");
-        fclose(fp);
-        fchmod(fd, S_IRWXU | S_IRWXG | S_IRWXO);
+        fprintf(fp, F_HEAD);
+        fprintf(fp, F_NAME"%s\n", desklink.name);
+        fprintf(fp, F_COMM"%s\n", desklink.comment);
+        fprintf(fp, F_EXEC"%s\n", desklink.appPath);
+        fprintf(fp, F_ICON"%s\n", desklink.imagePath);
+        fprintf(fp, F_TERM"%s\n", desklink.terminal?"true":"false");
+        fprintf(fp, F_TYPE"%s\n", "Application");//desklink.type);
+        fprintf(fp, F_CTEG"%s\n", desklink.category);
 
-        close(fd);
+        fchmod(fileno(fp), S_IRWXU | S_IRWXG | S_IRWXO);
+        fclose(fp);
+
     }
     else
     {
