@@ -36,7 +36,7 @@ static unsigned short isUseEditor;
 static unsigned char inputFlags;
 //------------------------------------------------------------------------------
 /**
-*   @var static char luncherFileFullPath[PATH_MAX]
+*   @var static char luncherFileFullPath
 *   @brief Contain full path of launcher .desktop file
 */
 static char launcherFileFullPath[PATH_MAX];
@@ -91,12 +91,12 @@ inline void setFlag(InputFlagsEnum flag);
 inline int isFlag(InputFlagsEnum flag);
 //------------------------------------------------------------------------------
 /**
-*   @fn int createLinkFile(int flag)
+*   @fn int createLaunchFile(int flag)
 *   @brief Create or open *.desktop file and write data from desklink_t structere
 *   @param  flag - create/open, rewrite/norewrite
 *   @return int - boolean value
 */
-int createLinkFile(int flag);
+int createLaunchFile(int flag);
 //------------------------------------------------------------------------------
 /**
 *   @fn void generateFilePath()
@@ -105,8 +105,15 @@ int createLinkFile(int flag);
 */
 void generateFilePath();
 //------------------------------------------------------------------------------
-
-
+/**
+*   @fn int writeFullStr(int fd, const char *sourceStr, size_t lenth)
+*   @brief write full string to file(provided fd)
+*   @param fd - file descriptor
+*   @param str -
+*   @return int - boolean value
+*/
+int writeFullStr(int fd, const char *sourceStr, size_t lenth);
+//------------------------------------------------------------------------------
 
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -128,7 +135,9 @@ int main(int argc, char* argv[])
     printf("[%s]: %-25s %-3d\t%-15s\n", APP_NAME, "Flag IMAGE:", isFlag(IMAGE), desklink.imagePath);
     printf("[%s]: %-25s %-3d\n", APP_NAME, "Flag EDITOR:", isFlag(EDITOR));
     printf("[%s]: %-25s %-3d\n", APP_NAME, "Flag USER_ONLY:", isFlag(UONLY));
-    createLinkFile(0);
+    //createLinkFile(0);
+    createLaunchFile(0);
+
     if (isFlag(EDITOR))
     {
         useExtEditor();
@@ -250,20 +259,11 @@ void useExtEditor(void)
     char *editor = getenv("EDITOR");
     printf("[%s]: %s\n", APP_NAME, editor);
 
-    if (editor != NULL && (execl("/bin/nano", editor, launcherFileFullPath, NULL)) == -1)
+    if (editor != NULL && (execlp(editor, editor, launcherFileFullPath, NULL)) == -1)
     {
         printf("[%s]: %s\n", APP_DATE, editor);
-        perror("execl");
+        perror("execlp");
     }
-    /*
-    char fullpath[PATH_MAX];
-    memset(fullpath, 0, sizeof(fullpath));
-    //readlink(editor, fullpath, strlen(editor));
-    realpath(editor, fullpath);
-    //canonicalize_file_name(editor);
-    printf("[%s]: %s\n", APP_NAME, fullpath);
-    //pid_t pid = fork();
-*/
 }
 //------------------------------------------------------------------------------
 /**
@@ -290,26 +290,13 @@ inline int isFlag(InputFlagsEnum flag)
 }
 //------------------------------------------------------------------------------
 /**
-*   @fn int createLinkFile(int flag)
+*   @fn int createLaunchFile(int flag)
 *   @brief Create or open *.desktop file and write data from desklink_t structere
 *   @param  flag - create/open, rewrite/norewrite
 *   @return int - boolean value
 */
-int createLinkFile(int flag)
+int createLaunchFile(int flag)
 {
-    //isFlag(UONLY)?DESK_DIR_USR:DESK_DIR
-    /*
-   	[Desktop Entry]
-	Name=FooCorp Painter Pro
-	Exec=foocorp-painter-pro
-	Type=Application
-	Categories=GTK;GNOME;Utility
-	Encoding=UTF-8
-    Comment=A sample application
-    Icon=application.png
-    Terminal=false
-
-    */
 
     /*
 
@@ -330,6 +317,8 @@ int createLinkFile(int flag)
     printf("[%s]: %s\n", APP_NAME,  launcherFileFullPath);
 
     fp = fopen(launcherFileFullPath, "w");
+    int fd = fileno(fp);
+
     if (fp)
     {
         fprintf(fp, "[Desktop Entry]\n");
@@ -341,14 +330,19 @@ int createLinkFile(int flag)
         fprintf(fp, "Type=Application\n");
         fprintf(fp, "Categories=\n");
         fclose(fp);
+        fchmod(fd, S_IRWXU | S_IRWXG | S_IRWXO);
+
+        close(fd);
     }
     else
     {
-        perror(PERR_APP"Fail to open file, ");
+        perror(PERR_APP" open file");
+        exit(EXIT_FAILURE);
     }
 
     return 0;
 }
+
 //------------------------------------------------------------------------------
 /**
 *   @fn void generateFilePath()
@@ -357,7 +351,6 @@ int createLinkFile(int flag)
 */
 void generateFilePath()
 {
-    //memset(launcherFileFullPath, 0, sizeof(linkpath));
     char homeDir[PATH_MAX/2];
 
     if (isFlag(UONLY))
@@ -366,7 +359,7 @@ void generateFilePath()
         strcpy(homeDir, getenv("HOME"));
         if (homeDir == NULL)
         {
-            perror(PERR_APP"getenv(), ");
+            perror(PERR_APP" getenv()");
             exit(EXIT_FAILURE);
         }
 
@@ -383,5 +376,32 @@ void generateFilePath()
     strcat(launcherFileFullPath, FILE_TYPE);
 }
 //------------------------------------------------------------------------------
+/**
+*   @fn int writeFullStr(int fd, const char *sourceStr, size_t lenth)
+*   @brief write full string to file(provided fd)
+*   @param fd - file descriptor
+*   @param str -
+*   @return int - boolean value
+*/
+int writeFullStr(int fd, const char *sourceStr, size_t lenth)
+{
+    size_t ret;
+
+    while (lenth != 0 && (ret = write(fd, sourceStr, lenth)) != 0)
+    {
+        if (ret == -1)
+        {
+            if (errno == EINTR)
+                continue;
+            perror(PERR_APP" write");
+            break;
+        }
+        lenth -= ret;
+        sourceStr += ret;
+    }
+}
+//------------------------------------------------------------------------------
+
+
 
 

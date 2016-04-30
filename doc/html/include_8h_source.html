@@ -91,22 +91,77 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//includes</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;getopt.h&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//-----------------------------------------------------</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">//defines</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">//app info</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="include_8h.html#a92673e33f27532767749b79edb8ef806">   16</a></span>&#160;<span class="preprocessor">#define APP_VERSION     &quot;0.0.1&quot;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="include_8h.html#ab00c3385a7887d28167e5db5cc2e77bd">   17</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define APP_DATE        &quot;2016&quot;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="include_8h.html#af0b5cfa4242ae7f98ba80fd23ef8afa9">   18</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define APP_NAME        &quot;MkDeskLi&quot;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor"></span><span class="comment">//-----------------------------------------------------</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif // INCLUDE_H_INCLUDED</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;getopt.h&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;limits.h&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">//-----------------------------------------------------</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">//defines</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">//app info</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="include_8h.html#a92673e33f27532767749b79edb8ef806">   20</a></span>&#160;<span class="preprocessor">#define APP_VERSION     &quot;0.0.1&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="include_8h.html#ab00c3385a7887d28167e5db5cc2e77bd">   21</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define APP_DATE        &quot;2016&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="include_8h.html#af0b5cfa4242ae7f98ba80fd23ef8afa9">   22</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define APP_NAME        &quot;MkDeskLi&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="include_8h.html#afe9af64ddff174e1b6e96db45b8f78fb">   23</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define FILE_TYPE       &quot;.desktop&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="include_8h.html#a1d94dde4c08a0d4b9b56f22dc91dce13">   24</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define DESKT_DIR       &quot;/home/sliderdv/temp&quot; // /usr/share/applications/</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="include_8h.html#a8015444b5a34bc5d2140a2a4342a2b9a">   25</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define DESKT_DIR_USR   &quot;&quot; // ~/.local/share/applications</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span><span class="comment">//-----------------------------------------------------</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="include_8h.html#ae9c269d4570557a7210cde498fa59776">   27</a></span>&#160;<span class="preprocessor">#define PERR_APP        &quot;[&quot;APP_NAME&quot;]:&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"></span><span class="comment">//-----------------------------------------------------</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">*   //@enum enum InputFlagsEnum</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">*   @brief Define shift for operations with inputFlags</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">*   @typedef typedef enum InputFlagsEnum InputFlagsEnum</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">*   @brief typedef enum InputFlagsEnum to InputFlagsEnum</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287">   35</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287">InputFlagsEnum</a></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287a52f49aba124a600ad9581caabe6a099a">   37</a></span>&#160;    <a class="code" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287a52f49aba124a600ad9581caabe6a099a">VERSION</a> = 0,</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287a9f5cb747b2e1f0ea781d2b1f2a5b4824">   38</a></span>&#160;    <a class="code" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287a9f5cb747b2e1f0ea781d2b1f2a5b4824">HELP</a>,</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287a67bc2ced260a8e43805d2480a785d312">   39</a></span>&#160;    <a class="code" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287a67bc2ced260a8e43805d2480a785d312">NAME</a>,</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287ad67a493278074cf714b262b33d84739c">   40</a></span>&#160;    <a class="code" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287ad67a493278074cf714b262b33d84739c">PATH</a>,</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287a3501d25cdde2b141c20edb67965fb692">   41</a></span>&#160;    <a class="code" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287a3501d25cdde2b141c20edb67965fb692">IMAGE</a>,</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287acd88c7ae2b15e95f236caae09eaa1f56">   42</a></span>&#160;    <a class="code" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287acd88c7ae2b15e95f236caae09eaa1f56">EDITOR</a>,</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287acf141e491d895049464a65af48db6548">   43</a></span>&#160;    <a class="code" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287acf141e491d895049464a65af48db6548">UONLY</a></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="include_8h.html#a100f6a2b29defda137b746ea76214835">   46</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287">InputFlagsEnum</a> <a class="code" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287">InputFlagsEnum</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">//------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">*   //@struct struct desktopLink</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">*   @brief Define</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">*   @typedef typedef desktopLink desklink_t</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">*   @brief typedef desktopLink to desklink_t</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structdesklink__t.html">   54</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structdesklink__t.html">desklink_t</a></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structdesklink__t.html#aff78ef2e29eaf6152f7586605dff6feb">   56</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structdesklink__t.html#aff78ef2e29eaf6152f7586605dff6feb">name</a>[NAME_MAX];</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structdesklink__t.html#aaf17b18d943c7240fca22ce5083334d8">   57</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structdesklink__t.html#aaf17b18d943c7240fca22ce5083334d8">appPath</a>[PATH_MAX];</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structdesklink__t.html#ab0de75054dd03a6b44b273ebd1323ae8">   58</a></span>&#160;    <span class="keywordtype">char</span> <a class="code" href="structdesklink__t.html#ab0de75054dd03a6b44b273ebd1323ae8">imagePath</a>[PATH_MAX];</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;};</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="include_8h.html#a67f1628a77c3e3d9b7b4bfab34f285c0">   61</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structdesklink__t.html">desklink_t</a> <a class="code" href="structdesklink__t.html">desklink_t</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">//------------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif // INCLUDE_H_INCLUDED</span></div>
+<div class="ttc" id="include_8h_html_ae3cad780b8f3f34297941ce383b8a287ad67a493278074cf714b262b33d84739c"><div class="ttname"><a href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287ad67a493278074cf714b262b33d84739c">PATH</a></div><div class="ttdef"><b>Definition:</b> <a href="include_8h_source.html#l00040">include.h:40</a></div></div>
+<div class="ttc" id="include_8h_html_ae3cad780b8f3f34297941ce383b8a287acd88c7ae2b15e95f236caae09eaa1f56"><div class="ttname"><a href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287acd88c7ae2b15e95f236caae09eaa1f56">EDITOR</a></div><div class="ttdef"><b>Definition:</b> <a href="include_8h_source.html#l00042">include.h:42</a></div></div>
+<div class="ttc" id="structdesklink__t_html"><div class="ttname"><a href="structdesklink__t.html">desklink_t</a></div><div class="ttdef"><b>Definition:</b> <a href="include_8h_source.html#l00054">include.h:54</a></div></div>
+<div class="ttc" id="include_8h_html_ae3cad780b8f3f34297941ce383b8a287a3501d25cdde2b141c20edb67965fb692"><div class="ttname"><a href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287a3501d25cdde2b141c20edb67965fb692">IMAGE</a></div><div class="ttdef"><b>Definition:</b> <a href="include_8h_source.html#l00041">include.h:41</a></div></div>
+<div class="ttc" id="include_8h_html_ae3cad780b8f3f34297941ce383b8a287acf141e491d895049464a65af48db6548"><div class="ttname"><a href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287acf141e491d895049464a65af48db6548">UONLY</a></div><div class="ttdef"><b>Definition:</b> <a href="include_8h_source.html#l00043">include.h:43</a></div></div>
+<div class="ttc" id="structdesklink__t_html_aff78ef2e29eaf6152f7586605dff6feb"><div class="ttname"><a href="structdesklink__t.html#aff78ef2e29eaf6152f7586605dff6feb">desklink_t::name</a></div><div class="ttdeci">char name[NAME_MAX]</div><div class="ttdef"><b>Definition:</b> <a href="include_8h_source.html#l00056">include.h:56</a></div></div>
+<div class="ttc" id="include_8h_html_ae3cad780b8f3f34297941ce383b8a287"><div class="ttname"><a href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287">InputFlagsEnum</a></div><div class="ttdeci">InputFlagsEnum</div><div class="ttdef"><b>Definition:</b> <a href="include_8h_source.html#l00035">include.h:35</a></div></div>
+<div class="ttc" id="structdesklink__t_html_aaf17b18d943c7240fca22ce5083334d8"><div class="ttname"><a href="structdesklink__t.html#aaf17b18d943c7240fca22ce5083334d8">desklink_t::appPath</a></div><div class="ttdeci">char appPath[PATH_MAX]</div><div class="ttdef"><b>Definition:</b> <a href="include_8h_source.html#l00057">include.h:57</a></div></div>
+<div class="ttc" id="include_8h_html_ae3cad780b8f3f34297941ce383b8a287a52f49aba124a600ad9581caabe6a099a"><div class="ttname"><a href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287a52f49aba124a600ad9581caabe6a099a">VERSION</a></div><div class="ttdef"><b>Definition:</b> <a href="include_8h_source.html#l00037">include.h:37</a></div></div>
+<div class="ttc" id="include_8h_html_ae3cad780b8f3f34297941ce383b8a287a67bc2ced260a8e43805d2480a785d312"><div class="ttname"><a href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287a67bc2ced260a8e43805d2480a785d312">NAME</a></div><div class="ttdef"><b>Definition:</b> <a href="include_8h_source.html#l00039">include.h:39</a></div></div>
+<div class="ttc" id="include_8h_html_ae3cad780b8f3f34297941ce383b8a287a9f5cb747b2e1f0ea781d2b1f2a5b4824"><div class="ttname"><a href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287a9f5cb747b2e1f0ea781d2b1f2a5b4824">HELP</a></div><div class="ttdef"><b>Definition:</b> <a href="include_8h_source.html#l00038">include.h:38</a></div></div>
+<div class="ttc" id="structdesklink__t_html_ab0de75054dd03a6b44b273ebd1323ae8"><div class="ttname"><a href="structdesklink__t.html#ab0de75054dd03a6b44b273ebd1323ae8">desklink_t::imagePath</a></div><div class="ttdeci">char imagePath[PATH_MAX]</div><div class="ttdef"><b>Definition:</b> <a href="include_8h_source.html#l00058">include.h:58</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 28 2016 20:41:23 for mkdeskli by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 29 2016 22:04:56 for mkdeskli by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

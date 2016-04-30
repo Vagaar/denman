@@ -7,15 +7,15 @@
 
 var indexSectionsWithContent =
 {
-  0: "adehimnpsuv",
+  0: "acdefghimnpsuv",
   1: "d",
   2: "im",
-  3: "impsu",
+  3: "cgimpsu",
   4: "ain",
   5: "di",
   6: "i",
-  7: "ehinpv",
-  8: "a"
+  7: "ehinpuv",
+  8: "adfp"
 };
 
 var indexSectionNames =

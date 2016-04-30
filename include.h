@@ -5,14 +5,20 @@
  *  @file include.h - All const and defines.
  */
 //includes
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <stdio.h>      //ISO C99 Standard: 7.19 Input/output
+#include <stdlib.h>     //ISO C99 Standard: 7.20 General utilities
+#include <string.h>     //ISO C99 Standard: 7.21 String handling
 
-#include <unistd.h>
+#include <unistd.h>     //POSIX Standard: 2.10 Symbolic Constants
 #include <getopt.h>
 
-#include <limits.h>
+#include <limits.h>     //ISO C99 Standard: 7.10/5.2.4.2.1 Sizes of integer types
+//-----------------------------------------------------
+//Unix Systems
+#include <sys/types.h>  //POSIX Standard: 2.6 Primitive System Data Type
+#include <sys/stat.h>   //POSIX Standard: 5.6 File Characteristics
+#include <fcntl.h>      //POSIX Standard: 6.5 File Control Operations
+#include <sys/errno.h>
 
 //-----------------------------------------------------
 //defines
@@ -25,6 +31,25 @@
 #define DESKT_DIR_USR   "" // ~/.local/share/applications
 //-----------------------------------------------------
 #define PERR_APP        "["APP_NAME"]:"
+//-----------------------------------------------------
+//launcher templite
+/*        fprintf(fp, "[Desktop Entry]\n");
+        fprintf(fp, "Name=%s\n", desklink.name);
+        fprintf(fp, "Comment=%s\n", desklink.name);
+        fprintf(fp, "Exec=%s\n", desklink.appPath);
+        fprintf(fp, "Icon=%s\n", desklink.imagePath);
+        fprintf(fp, "Terminal=false\n");
+        fprintf(fp, "Type=Application\n");
+        fprintf(fp, "Categories=\n");*/
+#define F_HEAD            "[Desktop Entry]\n"
+#define F_NAME            "Name="
+#define F_COMM            "Comment="
+#define F_EXEC            "Exec="
+#define F_ICON            "Icon="
+#define F_TERM            "Terminal="
+#define F_TYPE            "Type="
+#define F_CTEG            "Categories="
+
 //-----------------------------------------------------
 /*
 *   //@enum enum InputFlagsEnum
