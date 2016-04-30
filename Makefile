@@ -14,7 +14,7 @@ compile:
 	$(CC) -S $(SOURCES)
 
 clean :
-	rm -f *.o $(BUILD)$(OBJ)
+	rm -f *.o $(BUILD)$(OBJ) *.s $(OBJ)
 
 install: $(OBJ)
 	@echo "Start installing [$(OBJ)] to [$(INSTD)]"
