@@ -27,8 +27,8 @@
 #define APP_DATE        "2016"
 #define APP_NAME        "MkDeskLi"
 #define FILE_TYPE       ".desktop"
-#define DESKT_DIR       "/home/sliderdv/temp" // /usr/share/applications/
-#define DESKT_DIR_USR   "" // ~/.local/share/applications
+#define DESKT_DIR       "/usr/share/applications/"
+#define DESKT_DIR_USR   "/.local/share/applications"
 //-----------------------------------------------------
 #define PERR_APP        "["APP_NAME"]:"
 //-----------------------------------------------------
@@ -66,8 +66,9 @@ enum InputFlagsEnum
     PATH,
     IMAGE,
     EDITOR,
-    UONLY,
-    TERM
+    ALLU,
+    TERM,
+    REMV
 };
 
 typedef enum InputFlagsEnum InputFlagsEnum;
