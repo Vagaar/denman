@@ -3,19 +3,18 @@ CC=gcc
 SOURCES=*.c
 OBJCT=$(SOURCES:.c=.o)
 INSTD=/usr/bin/
-BUILD=build/
 
 all:
 	@echo "Start make [$(OBJ)]"
-	$(CC) $(SOURCES) -o $(BUILD)$(OBJ)
+	$(CC) $(SOURCES) -o $(OBJ)
 	@echo "Make finished"
 
 clean :
-	rm -f *.o $(BUILD)$(OBJ) *.s $(OBJ)
+	rm -f *.o $(OBJ)
 
 install: $(OBJ)
 	@echo "Start installing [$(OBJ)] to [$(INSTD)]"
-	cp $(BUILD)$(OBJ) $(INSTD)
+	cp $(OBJ) $(INSTD)
 	@echo "Installing finished"
 
 uninstall:
