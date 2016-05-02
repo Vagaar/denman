@@ -23,10 +23,14 @@ void \hyperlink{mkdeskli_8c_a10f490ddab0c2fcf167414f985a1cdbc}{set\-Flag} (\hype
 \begin{DoxyCompactList}\small\item\em Set flag in char input\-Flags that defined in enum Input\-Flags\-Enum. \end{DoxyCompactList}\item 
 int \hyperlink{mkdeskli_8c_abb3a7dd8cf1bbcc20ef938da88121126}{is\-Flag} (\hyperlink{include_8h_ae3cad780b8f3f34297941ce383b8a287}{Input\-Flags\-Enum} flag)
 \begin{DoxyCompactList}\small\item\em Check needed flag in input\-Flags. \end{DoxyCompactList}\item 
-int \hyperlink{mkdeskli_8c_ac7019ab1e7d3d56836cb88dbe000e5fe}{create\-Link\-File} (int flag)
+int \hyperlink{mkdeskli_8c_a8538a937556436f65c2ac03ec76520ce}{create\-Launch\-File} (int flag)
 \begin{DoxyCompactList}\small\item\em Create or open $\ast$.desktop file and write data from \hyperlink{structdesklink__t}{desklink\-\_\-t} structere. \end{DoxyCompactList}\item 
 void \hyperlink{mkdeskli_8c_a805c5a2f7ac48fffcac79c6a14f7a8bd}{generate\-File\-Path} ()
 \begin{DoxyCompactList}\small\item\em Function generate full path to creating .desktop file. \end{DoxyCompactList}\item 
+int \hyperlink{mkdeskli_8c_a9584ac10c3536d3067883f8f6a286f96}{write\-Full\-Str} (int fd, const char $\ast$source\-Str, size\-\_\-t lenth)
+\begin{DoxyCompactList}\small\item\em write full string to file(provided fd) \end{DoxyCompactList}\item 
+void \hyperlink{mkdeskli_8c_a6a26e7f36bbe7dabe2c2d725684f9602}{search\-Launcher} (const char $\ast$key\-Word)
+\begin{DoxyCompactList}\small\item\em search launcher that name contain key\-Word \end{DoxyCompactList}\item 
 int \hyperlink{mkdeskli_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em Main -\/ entery point of application. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -42,13 +46,13 @@ Definition in file \hyperlink{mkdeskli_8c_source}{mkdeskli.\-c}.
 
 
 \subsection{Function Documentation}
-\hypertarget{mkdeskli_8c_ac7019ab1e7d3d56836cb88dbe000e5fe}{\index{mkdeskli.\-c@{mkdeskli.\-c}!create\-Link\-File@{create\-Link\-File}}
-\index{create\-Link\-File@{create\-Link\-File}!mkdeskli.c@{mkdeskli.\-c}}
-\subsubsection[{create\-Link\-File}]{\setlength{\rightskip}{0pt plus 5cm}int create\-Link\-File (
+\hypertarget{mkdeskli_8c_a8538a937556436f65c2ac03ec76520ce}{\index{mkdeskli.\-c@{mkdeskli.\-c}!create\-Launch\-File@{create\-Launch\-File}}
+\index{create\-Launch\-File@{create\-Launch\-File}!mkdeskli.c@{mkdeskli.\-c}}
+\subsubsection[{create\-Launch\-File}]{\setlength{\rightskip}{0pt plus 5cm}int create\-Launch\-File (
 \begin{DoxyParamCaption}
 \item[{int}]{flag}
 \end{DoxyParamCaption}
-)}}\label{mkdeskli_8c_ac7019ab1e7d3d56836cb88dbe000e5fe}
+)}}\label{mkdeskli_8c_a8538a937556436f65c2ac03ec76520ce}
 
 
 Create or open $\ast$.desktop file and write data from \hyperlink{structdesklink__t}{desklink\-\_\-t} structere. 
@@ -63,7 +67,7 @@ int -\/ boolean value
 \end{DoxyReturn}
 
 
-Definition at line 298 of file mkdeskli.\-c.
+Definition at line 392 of file mkdeskli.\-c.
 
 \hypertarget{mkdeskli_8c_a805c5a2f7ac48fffcac79c6a14f7a8bd}{\index{mkdeskli.\-c@{mkdeskli.\-c}!generate\-File\-Path@{generate\-File\-Path}}
 \index{generate\-File\-Path@{generate\-File\-Path}!mkdeskli.c@{mkdeskli.\-c}}
@@ -81,7 +85,7 @@ void
 \end{DoxyReturn}
 
 
-Definition at line 358 of file mkdeskli.\-c.
+Definition at line 430 of file mkdeskli.\-c.
 
 \hypertarget{mkdeskli_8c_abb3a7dd8cf1bbcc20ef938da88121126}{\index{mkdeskli.\-c@{mkdeskli.\-c}!is\-Flag@{is\-Flag}}
 \index{is\-Flag@{is\-Flag}!mkdeskli.c@{mkdeskli.\-c}}
@@ -106,7 +110,7 @@ int -\/ boolean value
 \end{DoxyReturn}
 
 
-Definition at line 287 of file mkdeskli.\-c.
+Definition at line 381 of file mkdeskli.\-c.
 
 \hypertarget{mkdeskli_8c_a0ddf1224851353fc92bfbff6f499fa97}{\index{mkdeskli.\-c@{mkdeskli.\-c}!main@{main}}
 \index{main@{main}!mkdeskli.c@{mkdeskli.\-c}}
@@ -132,7 +136,7 @@ Exit status
 \end{DoxyReturn}
 
 
-Definition at line 120 of file mkdeskli.\-c.
+Definition at line 135 of file mkdeskli.\-c.
 
 \hypertarget{mkdeskli_8c_af87e0443788023a5e83268ec012ce4b9}{\index{mkdeskli.\-c@{mkdeskli.\-c}!pars\-Incoming\-Arg@{pars\-Incoming\-Arg}}
 \index{pars\-Incoming\-Arg@{pars\-Incoming\-Arg}!mkdeskli.c@{mkdeskli.\-c}}
@@ -158,7 +162,7 @@ void
 \end{DoxyReturn}
 
 
-Definition at line 149 of file mkdeskli.\-c.
+Definition at line 221 of file mkdeskli.\-c.
 
 \hypertarget{mkdeskli_8c_ac343466de5c71f3e75fe12fe60c84411}{\index{mkdeskli.\-c@{mkdeskli.\-c}!phelp@{phelp}}
 \index{phelp@{phelp}!mkdeskli.c@{mkdeskli.\-c}}
@@ -181,7 +185,30 @@ void
 \end{DoxyReturn}
 
 
-Definition at line 223 of file mkdeskli.\-c.
+Definition at line 320 of file mkdeskli.\-c.
+
+\hypertarget{mkdeskli_8c_a6a26e7f36bbe7dabe2c2d725684f9602}{\index{mkdeskli.\-c@{mkdeskli.\-c}!search\-Launcher@{search\-Launcher}}
+\index{search\-Launcher@{search\-Launcher}!mkdeskli.c@{mkdeskli.\-c}}
+\subsubsection[{search\-Launcher}]{\setlength{\rightskip}{0pt plus 5cm}void search\-Launcher (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{key\-Word}
+\end{DoxyParamCaption}
+)}}\label{mkdeskli_8c_a6a26e7f36bbe7dabe2c2d725684f9602}
+
+
+search launcher that name contain key\-Word 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key\-Word} & -\/ key\-Ward that contain in launcher name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Definition at line 488 of file mkdeskli.\-c.
 
 \hypertarget{mkdeskli_8c_a10f490ddab0c2fcf167414f985a1cdbc}{\index{mkdeskli.\-c@{mkdeskli.\-c}!set\-Flag@{set\-Flag}}
 \index{set\-Flag@{set\-Flag}!mkdeskli.c@{mkdeskli.\-c}}
@@ -204,7 +231,7 @@ void
 \end{DoxyReturn}
 
 
-Definition at line 275 of file mkdeskli.\-c.
+Definition at line 369 of file mkdeskli.\-c.
 
 \hypertarget{mkdeskli_8c_adfb97b9995a0fb9563494eef7b0615ae}{\index{mkdeskli.\-c@{mkdeskli.\-c}!use\-Ext\-Editor@{use\-Ext\-Editor}}
 \index{use\-Ext\-Editor@{use\-Ext\-Editor}!mkdeskli.c@{mkdeskli.\-c}}
@@ -222,5 +249,32 @@ void
 \end{DoxyReturn}
 
 
-Definition at line 248 of file mkdeskli.\-c.
+Definition at line 350 of file mkdeskli.\-c.
+
+\hypertarget{mkdeskli_8c_a9584ac10c3536d3067883f8f6a286f96}{\index{mkdeskli.\-c@{mkdeskli.\-c}!write\-Full\-Str@{write\-Full\-Str}}
+\index{write\-Full\-Str@{write\-Full\-Str}!mkdeskli.c@{mkdeskli.\-c}}
+\subsubsection[{write\-Full\-Str}]{\setlength{\rightskip}{0pt plus 5cm}int write\-Full\-Str (
+\begin{DoxyParamCaption}
+\item[{int}]{fd, }
+\item[{const char $\ast$}]{source\-Str, }
+\item[{size\-\_\-t}]{lenth}
+\end{DoxyParamCaption}
+)}}\label{mkdeskli_8c_a9584ac10c3536d3067883f8f6a286f96}
+
+
+write full string to file(provided fd) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & -\/ file descriptor \\
+\hline
+{\em str} & -\/ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ boolean value 
+\end{DoxyReturn}
+
+
+Definition at line 464 of file mkdeskli.\-c.
 

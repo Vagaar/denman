@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['help',['HELP',['../include_8h.html#ae3cad780b8f3f34297941ce383b8a287a9f5cb747b2e1f0ea781d2b1f2a5b4824',1,'include.h']]]
+  ['editor',['EDITOR',['../include_8h.html#ae3cad780b8f3f34297941ce383b8a287acd88c7ae2b15e95f236caae09eaa1f56',1,'include.h']]]
 ];

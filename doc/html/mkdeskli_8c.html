@@ -114,12 +114,18 @@ Functions</h2></td></tr>
 <tr class="memitem:abb3a7dd8cf1bbcc20ef938da88121126"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mkdeskli_8c.html#abb3a7dd8cf1bbcc20ef938da88121126">isFlag</a> (<a class="el" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287">InputFlagsEnum</a> flag)</td></tr>
 <tr class="memdesc:abb3a7dd8cf1bbcc20ef938da88121126"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check needed flag in inputFlags.  <a href="#abb3a7dd8cf1bbcc20ef938da88121126">More...</a><br/></td></tr>
 <tr class="separator:abb3a7dd8cf1bbcc20ef938da88121126"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7019ab1e7d3d56836cb88dbe000e5fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mkdeskli_8c.html#ac7019ab1e7d3d56836cb88dbe000e5fe">createLinkFile</a> (int flag)</td></tr>
-<tr class="memdesc:ac7019ab1e7d3d56836cb88dbe000e5fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create or open *.desktop file and write data from <a class="el" href="structdesklink__t.html">desklink_t</a> structere.  <a href="#ac7019ab1e7d3d56836cb88dbe000e5fe">More...</a><br/></td></tr>
-<tr class="separator:ac7019ab1e7d3d56836cb88dbe000e5fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8538a937556436f65c2ac03ec76520ce"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mkdeskli_8c.html#a8538a937556436f65c2ac03ec76520ce">createLaunchFile</a> (int flag)</td></tr>
+<tr class="memdesc:a8538a937556436f65c2ac03ec76520ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create or open *.desktop file and write data from <a class="el" href="structdesklink__t.html">desklink_t</a> structere.  <a href="#a8538a937556436f65c2ac03ec76520ce">More...</a><br/></td></tr>
+<tr class="separator:a8538a937556436f65c2ac03ec76520ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a805c5a2f7ac48fffcac79c6a14f7a8bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mkdeskli_8c.html#a805c5a2f7ac48fffcac79c6a14f7a8bd">generateFilePath</a> ()</td></tr>
 <tr class="memdesc:a805c5a2f7ac48fffcac79c6a14f7a8bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function generate full path to creating .desktop file.  <a href="#a805c5a2f7ac48fffcac79c6a14f7a8bd">More...</a><br/></td></tr>
 <tr class="separator:a805c5a2f7ac48fffcac79c6a14f7a8bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9584ac10c3536d3067883f8f6a286f96"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mkdeskli_8c.html#a9584ac10c3536d3067883f8f6a286f96">writeFullStr</a> (int fd, const char *sourceStr, size_t lenth)</td></tr>
+<tr class="memdesc:a9584ac10c3536d3067883f8f6a286f96"><td class="mdescLeft">&#160;</td><td class="mdescRight">write full string to file(provided fd)  <a href="#a9584ac10c3536d3067883f8f6a286f96">More...</a><br/></td></tr>
+<tr class="separator:a9584ac10c3536d3067883f8f6a286f96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a26e7f36bbe7dabe2c2d725684f9602"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mkdeskli_8c.html#a6a26e7f36bbe7dabe2c2d725684f9602">searchLauncher</a> (const char *keyWord)</td></tr>
+<tr class="memdesc:a6a26e7f36bbe7dabe2c2d725684f9602"><td class="mdescLeft">&#160;</td><td class="mdescRight">search launcher that name contain keyWord  <a href="#a6a26e7f36bbe7dabe2c2d725684f9602">More...</a><br/></td></tr>
+<tr class="separator:a6a26e7f36bbe7dabe2c2d725684f9602"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mkdeskli_8c.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
 <tr class="memdesc:a0ddf1224851353fc92bfbff6f499fa97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main - entery point of application.  <a href="#a0ddf1224851353fc92bfbff6f499fa97">More...</a><br/></td></tr>
 <tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,12 +137,12 @@ Functions</h2></td></tr>
 
 <p>Definition in file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ac7019ab1e7d3d56836cb88dbe000e5fe"></a>
+<a class="anchor" id="a8538a937556436f65c2ac03ec76520ce"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int createLinkFile </td>
+          <td class="memname">int createLaunchFile </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>flag</em></td><td>)</td>
@@ -154,7 +160,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int - boolean value </dd></dl>
 
-<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00298">298</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
+<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00392">392</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
 
 </div>
 </div>
@@ -174,7 +180,7 @@ Functions</h2></td></tr>
 <p>Function generate full path to creating .desktop file. </p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
-<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00358">358</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
+<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00430">430</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
 
 </div>
 </div>
@@ -211,7 +217,7 @@ Functions</h2></td></tr>
 <dd>
 int - boolean value </dd></dl>
 
-<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00287">287</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
+<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00381">381</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
 
 </div>
 </div>
@@ -249,7 +255,7 @@ int - boolean value </dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Exit status </dd></dl>
 
-<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00120">120</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
+<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00135">135</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
 
 </div>
 </div>
@@ -288,7 +294,7 @@ int - boolean value </dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
-<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00149">149</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
+<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00221">221</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
 
 </div>
 </div>
@@ -315,7 +321,34 @@ int - boolean value </dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
-<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00223">223</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
+<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00320">320</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6a26e7f36bbe7dabe2c2d725684f9602"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void searchLauncher </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>keyWord</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>search launcher that name contain keyWord </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">keyWord</td><td>- keyWard that contain in launcher name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00488">488</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
 
 </div>
 </div>
@@ -350,7 +383,7 @@ int - boolean value </dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
-<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00275">275</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
+<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00369">369</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
 
 </div>
 </div>
@@ -371,14 +404,58 @@ int - boolean value </dd></dl>
 <p>Function make fork and start external editor (that defined in $EDITOR invorement variable) for editing link parameters. </p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
-<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00248">248</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
+<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00350">350</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9584ac10c3536d3067883f8f6a286f96"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int writeFullStr </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>sourceStr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>lenth</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>write full string to file(provided fd) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fd</td><td>- file descriptor </td></tr>
+    <tr><td class="paramname">str</td><td>- </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int - boolean value </dd></dl>
+
+<p>Definition at line <a class="el" href="mkdeskli_8c_source.html#l00464">464</a> of file <a class="el" href="mkdeskli_8c_source.html">mkdeskli.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 29 2016 22:04:56 for mkdeskli by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 2 2016 20:36:03 for mkdeskli by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

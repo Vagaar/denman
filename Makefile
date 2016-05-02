@@ -1,4 +1,4 @@
-OBJ=mkdeskli
+OBJ=denman
 CC=gcc
 SOURCES=*.c
 OBJCT=$(SOURCES:.c=.o)
@@ -8,10 +8,7 @@ BUILD=build/
 all:
 	@echo "Start make [$(OBJ)]"
 	$(CC) $(SOURCES) -o $(BUILD)$(OBJ)
-	#mv $(OBJ) $(BUILD)
 	@echo "Make finished"
-compile:
-	$(CC) -S $(SOURCES)
 
 clean :
 	rm -f *.o $(BUILD)$(OBJ) *.s $(OBJ)

@@ -114,6 +114,14 @@ void generateFilePath();
 */
 int writeFullStr(int fd, const char *sourceStr, size_t lenth);
 //------------------------------------------------------------------------------
+/**
+*   @fn void searchLauncher(const char *keyWord)
+*   @brief search launcher that name contain keyWord
+*   @param keyWord  - keyWard that contain in launcher name
+*   @return void
+*/
+void searchLauncher(const char *keyWord);
+//------------------------------------------------------------------------------
 
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -128,12 +136,10 @@ int main(int argc, char* argv[])
 {
     memset(&desklink, 0, sizeof(desklink_t));
     parsIncomingArg(argc, argv);
-    generateFilePath();
-    printf(PERR_APP" %s\n", launcherFileFullPath);
 
     if (isFlag(NAME))
     {
-
+        generateFilePath();
         if (!isFlag(PATH))
         {
             printf("Please, set application path: ");
@@ -179,11 +185,16 @@ int main(int argc, char* argv[])
     {
         if (isFlag(REMV))
         {
+            generateFilePath();
             if (unlink(launcherFileFullPath) == -1);
             {
                 perror(PERR_APP" remove file");
             }
 
+        }
+        else if (isFlag(SRCH))
+        {
+            searchLauncher(desklink.name);
         }
         else
         {
@@ -223,10 +234,11 @@ void parsIncomingArg(int argc, char* argv[])
         {"user-only",   no_argument,             0, 'o'},
         {"terminal",    no_argument,             0, 't'},
         {"remove",      required_argument,       0, 'r'},
+        {"search",      required_argument,       0, 's'},
         {0, 0, 0, 0}
     };
 
-    static char *options_string = "vhn:p:i:uatr:";
+    static char *options_string = "vhn:p:i:uatr:s:";
 
     while ((opt = getopt_long(argc, argv, options_string, long_options, &option_index)) != -1)
     {
@@ -283,6 +295,14 @@ void parsIncomingArg(int argc, char* argv[])
                     strcpy(desklink.name, optarg);
                 }
                 break;
+            case 's':
+                if (optarg)
+                {
+                    setFlag(SRCH);
+                    strcpy(desklink.name, optarg);
+
+                }
+                break;
             case '?':
             default:
                 exit(EXIT_FAILURE);
@@ -307,15 +327,17 @@ void phelp(const char* appNameBin)
     printf("          Putting your application in the desktop menus.\n\n");
     printf("* Usage: %s [options] [-path < path >] [--image < path >] --name < name > \n\n", appNameBin);
     printf("* Usage: %s --remove < name >\n\n", appNameBin);
-    printf("   -v --version              Show program version and exit\n");
-    printf("   -h --help                 Display this help and exit\n");
-    printf("   -u --use-editor           Use default text editor to edit link parameters.\n");
-    printf("   -n --name  < name >       Name of application for the main menu\n");
-    printf("   -p --path  < path >       Path to what execute\n");
-    printf("   -i --image < path >       Path to image associated with this application.\n");
-    printf("   -a --all-users            Make accessible to all users(need su permission).\n");
-    printf("   -t --terminal             Start application in terminal.\n");
-    printf("   -r --remove < name >      Remove your application from the desktop menus.\n\n");
+    printf("* Usage: %s --search < key_word >\n\n", appNameBin);
+    printf("   -v --version                 Show program version and exit\n");
+    printf("   -h --help                    Display this help and exit\n");
+    printf("   -u --use-editor              Use default text editor to edit link parameters.\n");
+    printf("   -n --name  < name >          Name of application for the main menu\n");
+    printf("   -p --path  < path >          Path to what execute\n");
+    printf("   -i --image < path >          Path to image associated with this application.\n");
+    printf("   -a --all-users               Make accessible to all users(need su permission).\n");
+    printf("   -t --terminal                Start application in terminal.\n");
+    printf("   -r --remove < name >         Remove your application from the desktop menus.\n");
+    printf("   -s --search < key_word >     Search launcher file that name contain key_word.\n\n");
 
 
 }
@@ -455,6 +477,55 @@ int writeFullStr(int fd, const char *sourceStr, size_t lenth)
         lenth -= ret;
         sourceStr += ret;
     }
+}
+//------------------------------------------------------------------------------
+/**
+*   @fn void searchLauncher(const char *keyWord)
+*   @brief search launcher that name contain keyWord
+*   @param keyWord  - keyWard that contain in launcher name
+*   @return void
+*/
+void searchLauncher(const char *keyWord)
+{
+    //==========================================================
+
+    char homeDir[PATH_MAX/2];
+
+    if (!isFlag(ALLU))
+    {
+        memset(homeDir, 0, sizeof(homeDir));
+        strcpy(homeDir, getenv("HOME"));
+        if (homeDir == NULL)
+        {
+            perror(PERR_APP" getenv()");
+            exit(EXIT_FAILURE);
+        }
+        strcat(homeDir, DESKT_DIR_USR);
+    }
+    else
+    {
+        strcpy(homeDir, DESKT_DIR);
+    }
+    //==========================================================
+    struct dirent *fileInfo;
+    DIR *sdir;
+    printf("Current dir: %s\n\n", homeDir);
+    sdir = opendir(homeDir);
+    if (!sdir)
+    {
+        perror("opendir");
+        exit(EXIT_FAILURE);
+    }
+
+
+    while ((fileInfo = readdir(sdir))) {
+        if (strstr(fileInfo->d_name, keyWord))
+            printf("   %-s\n", fileInfo->d_name);
+    }
+    printf("\n");
+
+    closedir(sdir);
+
 }
 //------------------------------------------------------------------------------
 

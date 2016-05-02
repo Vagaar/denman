@@ -14,7 +14,12 @@
 {\ttfamily \#include $<$string.\-h$>$}\\*
 {\ttfamily \#include $<$unistd.\-h$>$}\\*
 {\ttfamily \#include $<$getopt.\-h$>$}\\*
+{\ttfamily \#include $<$dirent.\-h$>$}\\*
 {\ttfamily \#include $<$limits.\-h$>$}\\*
+{\ttfamily \#include $<$sys/types.\-h$>$}\\*
+{\ttfamily \#include $<$sys/stat.\-h$>$}\\*
+{\ttfamily \#include $<$fcntl.\-h$>$}\\*
+{\ttfamily \#include $<$sys/errno.\-h$>$}\\*
 \subsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
@@ -23,7 +28,7 @@ struct \hyperlink{structdesklink__t}{desklink\-\_\-t}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{include_8h_a92673e33f27532767749b79edb8ef806}{A\-P\-P\-\_\-\-V\-E\-R\-S\-I\-O\-N}~\char`\"{}0.\-0.\-1\char`\"{}
+\#define \hyperlink{include_8h_a92673e33f27532767749b79edb8ef806}{A\-P\-P\-\_\-\-V\-E\-R\-S\-I\-O\-N}~\char`\"{}0.\-0.\-2\char`\"{}
 \item 
 \#define \hyperlink{include_8h_ab00c3385a7887d28167e5db5cc2e77bd}{A\-P\-P\-\_\-\-D\-A\-T\-E}~\char`\"{}2016\char`\"{}
 \item 
@@ -31,11 +36,33 @@ struct \hyperlink{structdesklink__t}{desklink\-\_\-t}
 \item 
 \#define \hyperlink{include_8h_afe9af64ddff174e1b6e96db45b8f78fb}{F\-I\-L\-E\-\_\-\-T\-Y\-P\-E}~\char`\"{}.desktop\char`\"{}
 \item 
-\#define \hyperlink{include_8h_a1d94dde4c08a0d4b9b56f22dc91dce13}{D\-E\-S\-K\-T\-\_\-\-D\-I\-R}~\char`\"{}/home/sliderdv/temp\char`\"{}
+\#define \hyperlink{include_8h_a1d94dde4c08a0d4b9b56f22dc91dce13}{D\-E\-S\-K\-T\-\_\-\-D\-I\-R}~\char`\"{}/usr/share/applications\char`\"{}
 \item 
-\#define \hyperlink{include_8h_a8015444b5a34bc5d2140a2a4342a2b9a}{D\-E\-S\-K\-T\-\_\-\-D\-I\-R\-\_\-\-U\-S\-R}~\char`\"{}\char`\"{}
+\#define \hyperlink{include_8h_a8015444b5a34bc5d2140a2a4342a2b9a}{D\-E\-S\-K\-T\-\_\-\-D\-I\-R\-\_\-\-U\-S\-R}~\char`\"{}/.local/share/applications\char`\"{}
 \item 
 \#define \hyperlink{include_8h_ae9c269d4570557a7210cde498fa59776}{P\-E\-R\-R\-\_\-\-A\-P\-P}~\char`\"{}\mbox{[}\char`\"{}\hyperlink{include_8h_af0b5cfa4242ae7f98ba80fd23ef8afa9}{A\-P\-P\-\_\-\-N\-A\-M\-E}\char`\"{}\mbox{]}\-:\char`\"{}
+\item 
+\#define \hyperlink{include_8h_a750e8835a17b6ee46444370561e61073}{F\-\_\-\-H\-E\-A\-D}~\char`\"{}\mbox{[}Desktop Entry\mbox{]}\textbackslash{}n\char`\"{}
+\item 
+\#define \hyperlink{include_8h_aed896104ed4a9b852e7819de5555e05a}{F\-\_\-\-N\-A\-M\-E}~\char`\"{}Name=\char`\"{}
+\item 
+\#define \hyperlink{include_8h_aa0b49fd2872deb7e4d254d041d00175c}{F\-\_\-\-C\-O\-M\-M}~\char`\"{}Comment=\char`\"{}
+\item 
+\#define \hyperlink{include_8h_ac8478f945b974056ed3b97b6e546dd23}{F\-\_\-\-E\-X\-E\-C}~\char`\"{}Exec=\char`\"{}
+\item 
+\#define \hyperlink{include_8h_a52a0a213071b3da600a05f6d6272add3}{F\-\_\-\-I\-C\-O\-N}~\char`\"{}Icon=\char`\"{}
+\item 
+\#define \hyperlink{include_8h_a9447d2dee6d78829b317d86905fc12ab}{F\-\_\-\-T\-E\-R\-M}~\char`\"{}Terminal=\char`\"{}
+\item 
+\#define \hyperlink{include_8h_a97508f041e42f64005162b87a77ca365}{F\-\_\-\-T\-Y\-P\-E}~\char`\"{}Type=\char`\"{}
+\item 
+\#define \hyperlink{include_8h_a127240b0f91e7ac4079f2b82fd414844}{F\-\_\-\-C\-T\-E\-G}~\char`\"{}Categories=\char`\"{}
+\item 
+\#define \hyperlink{include_8h_a9c0aa1f4715bb32583eadc59c3dabe50}{F\-\_\-\-L\-E\-N\-\_\-\-C\-O\-M\-M}~1024
+\item 
+\#define \hyperlink{include_8h_a4d27e2aaf15863cdc020a72264660e3f}{F\-\_\-\-L\-E\-N\-\_\-\-T\-Y\-P\-E}~28
+\item 
+\#define \hyperlink{include_8h_ac2bfdb8881c8ce56b7d6d779007c9e89}{F\-\_\-\-L\-E\-N\-\_\-\-C\-T\-E\-G}~28
 \end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
@@ -48,14 +75,15 @@ typedef struct \hyperlink{structdesklink__t}{desklink\-\_\-t} \hyperlink{include
 \begin{DoxyCompactItemize}
 \item 
 enum \hyperlink{include_8h_ae3cad780b8f3f34297941ce383b8a287}{Input\-Flags\-Enum} \{ \\*
-\hyperlink{include_8h_ae3cad780b8f3f34297941ce383b8a287a52f49aba124a600ad9581caabe6a099a}{V\-E\-R\-S\-I\-O\-N} = 0, 
-\hyperlink{include_8h_ae3cad780b8f3f34297941ce383b8a287a9f5cb747b2e1f0ea781d2b1f2a5b4824}{H\-E\-L\-P}, 
-\hyperlink{include_8h_ae3cad780b8f3f34297941ce383b8a287a67bc2ced260a8e43805d2480a785d312}{N\-A\-M\-E}, 
+\hyperlink{include_8h_ae3cad780b8f3f34297941ce383b8a287a67bc2ced260a8e43805d2480a785d312}{N\-A\-M\-E} =0, 
 \hyperlink{include_8h_ae3cad780b8f3f34297941ce383b8a287ad67a493278074cf714b262b33d84739c}{P\-A\-T\-H}, 
-\\*
 \hyperlink{include_8h_ae3cad780b8f3f34297941ce383b8a287a3501d25cdde2b141c20edb67965fb692}{I\-M\-A\-G\-E}, 
 \hyperlink{include_8h_ae3cad780b8f3f34297941ce383b8a287acd88c7ae2b15e95f236caae09eaa1f56}{E\-D\-I\-T\-O\-R}, 
-\hyperlink{include_8h_ae3cad780b8f3f34297941ce383b8a287acf141e491d895049464a65af48db6548}{U\-O\-N\-L\-Y}
+\\*
+\hyperlink{include_8h_ae3cad780b8f3f34297941ce383b8a287ad00f62ef6f1aeb1cd475e9450830f293}{A\-L\-L\-U}, 
+\hyperlink{include_8h_ae3cad780b8f3f34297941ce383b8a287a14be5bd58406c94aefa8ef452857a432}{T\-E\-R\-M}, 
+\hyperlink{include_8h_ae3cad780b8f3f34297941ce383b8a287a06a3a26f2796d9443740ac586351c87b}{R\-E\-M\-V}, 
+\hyperlink{include_8h_ae3cad780b8f3f34297941ce383b8a287a6e8623178c4e7a9db6aed4db75f8bd07}{S\-R\-C\-H}
  \}
 \end{DoxyCompactItemize}
 
@@ -79,49 +107,126 @@ Definition in file \hyperlink{include_8h_source}{include.\-h}.
 \subsubsection[{A\-P\-P\-\_\-\-D\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\-P\-P\-\_\-\-D\-A\-T\-E~\char`\"{}2016\char`\"{}}}\label{include_8h_ab00c3385a7887d28167e5db5cc2e77bd}
 
 
-Definition at line 21 of file include.\-h.
+Definition at line 28 of file include.\-h.
 
 \hypertarget{include_8h_af0b5cfa4242ae7f98ba80fd23ef8afa9}{\index{include.\-h@{include.\-h}!A\-P\-P\-\_\-\-N\-A\-M\-E@{A\-P\-P\-\_\-\-N\-A\-M\-E}}
 \index{A\-P\-P\-\_\-\-N\-A\-M\-E@{A\-P\-P\-\_\-\-N\-A\-M\-E}!include.h@{include.\-h}}
 \subsubsection[{A\-P\-P\-\_\-\-N\-A\-M\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\-P\-P\-\_\-\-N\-A\-M\-E~\char`\"{}Mk\-Desk\-Li\char`\"{}}}\label{include_8h_af0b5cfa4242ae7f98ba80fd23ef8afa9}
 
 
-Definition at line 22 of file include.\-h.
+Definition at line 29 of file include.\-h.
 
 \hypertarget{include_8h_a92673e33f27532767749b79edb8ef806}{\index{include.\-h@{include.\-h}!A\-P\-P\-\_\-\-V\-E\-R\-S\-I\-O\-N@{A\-P\-P\-\_\-\-V\-E\-R\-S\-I\-O\-N}}
 \index{A\-P\-P\-\_\-\-V\-E\-R\-S\-I\-O\-N@{A\-P\-P\-\_\-\-V\-E\-R\-S\-I\-O\-N}!include.h@{include.\-h}}
-\subsubsection[{A\-P\-P\-\_\-\-V\-E\-R\-S\-I\-O\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\-P\-P\-\_\-\-V\-E\-R\-S\-I\-O\-N~\char`\"{}0.\-0.\-1\char`\"{}}}\label{include_8h_a92673e33f27532767749b79edb8ef806}
+\subsubsection[{A\-P\-P\-\_\-\-V\-E\-R\-S\-I\-O\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\-P\-P\-\_\-\-V\-E\-R\-S\-I\-O\-N~\char`\"{}0.\-0.\-2\char`\"{}}}\label{include_8h_a92673e33f27532767749b79edb8ef806}
 
 
-Definition at line 20 of file include.\-h.
+Definition at line 27 of file include.\-h.
 
 \hypertarget{include_8h_a1d94dde4c08a0d4b9b56f22dc91dce13}{\index{include.\-h@{include.\-h}!D\-E\-S\-K\-T\-\_\-\-D\-I\-R@{D\-E\-S\-K\-T\-\_\-\-D\-I\-R}}
 \index{D\-E\-S\-K\-T\-\_\-\-D\-I\-R@{D\-E\-S\-K\-T\-\_\-\-D\-I\-R}!include.h@{include.\-h}}
-\subsubsection[{D\-E\-S\-K\-T\-\_\-\-D\-I\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-S\-K\-T\-\_\-\-D\-I\-R~\char`\"{}/home/sliderdv/temp\char`\"{}}}\label{include_8h_a1d94dde4c08a0d4b9b56f22dc91dce13}
+\subsubsection[{D\-E\-S\-K\-T\-\_\-\-D\-I\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-S\-K\-T\-\_\-\-D\-I\-R~\char`\"{}/usr/share/applications\char`\"{}}}\label{include_8h_a1d94dde4c08a0d4b9b56f22dc91dce13}
 
 
-Definition at line 24 of file include.\-h.
+Definition at line 31 of file include.\-h.
 
 \hypertarget{include_8h_a8015444b5a34bc5d2140a2a4342a2b9a}{\index{include.\-h@{include.\-h}!D\-E\-S\-K\-T\-\_\-\-D\-I\-R\-\_\-\-U\-S\-R@{D\-E\-S\-K\-T\-\_\-\-D\-I\-R\-\_\-\-U\-S\-R}}
 \index{D\-E\-S\-K\-T\-\_\-\-D\-I\-R\-\_\-\-U\-S\-R@{D\-E\-S\-K\-T\-\_\-\-D\-I\-R\-\_\-\-U\-S\-R}!include.h@{include.\-h}}
-\subsubsection[{D\-E\-S\-K\-T\-\_\-\-D\-I\-R\-\_\-\-U\-S\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-S\-K\-T\-\_\-\-D\-I\-R\-\_\-\-U\-S\-R~\char`\"{}\char`\"{}}}\label{include_8h_a8015444b5a34bc5d2140a2a4342a2b9a}
+\subsubsection[{D\-E\-S\-K\-T\-\_\-\-D\-I\-R\-\_\-\-U\-S\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-S\-K\-T\-\_\-\-D\-I\-R\-\_\-\-U\-S\-R~\char`\"{}/.local/share/applications\char`\"{}}}\label{include_8h_a8015444b5a34bc5d2140a2a4342a2b9a}
 
 
-Definition at line 25 of file include.\-h.
+Definition at line 32 of file include.\-h.
+
+\hypertarget{include_8h_aa0b49fd2872deb7e4d254d041d00175c}{\index{include.\-h@{include.\-h}!F\-\_\-\-C\-O\-M\-M@{F\-\_\-\-C\-O\-M\-M}}
+\index{F\-\_\-\-C\-O\-M\-M@{F\-\_\-\-C\-O\-M\-M}!include.h@{include.\-h}}
+\subsubsection[{F\-\_\-\-C\-O\-M\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-\_\-\-C\-O\-M\-M~\char`\"{}Comment=\char`\"{}}}\label{include_8h_aa0b49fd2872deb7e4d254d041d00175c}
+
+
+Definition at line 47 of file include.\-h.
+
+\hypertarget{include_8h_a127240b0f91e7ac4079f2b82fd414844}{\index{include.\-h@{include.\-h}!F\-\_\-\-C\-T\-E\-G@{F\-\_\-\-C\-T\-E\-G}}
+\index{F\-\_\-\-C\-T\-E\-G@{F\-\_\-\-C\-T\-E\-G}!include.h@{include.\-h}}
+\subsubsection[{F\-\_\-\-C\-T\-E\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-\_\-\-C\-T\-E\-G~\char`\"{}Categories=\char`\"{}}}\label{include_8h_a127240b0f91e7ac4079f2b82fd414844}
+
+
+Definition at line 52 of file include.\-h.
+
+\hypertarget{include_8h_ac8478f945b974056ed3b97b6e546dd23}{\index{include.\-h@{include.\-h}!F\-\_\-\-E\-X\-E\-C@{F\-\_\-\-E\-X\-E\-C}}
+\index{F\-\_\-\-E\-X\-E\-C@{F\-\_\-\-E\-X\-E\-C}!include.h@{include.\-h}}
+\subsubsection[{F\-\_\-\-E\-X\-E\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-\_\-\-E\-X\-E\-C~\char`\"{}Exec=\char`\"{}}}\label{include_8h_ac8478f945b974056ed3b97b6e546dd23}
+
+
+Definition at line 48 of file include.\-h.
+
+\hypertarget{include_8h_a750e8835a17b6ee46444370561e61073}{\index{include.\-h@{include.\-h}!F\-\_\-\-H\-E\-A\-D@{F\-\_\-\-H\-E\-A\-D}}
+\index{F\-\_\-\-H\-E\-A\-D@{F\-\_\-\-H\-E\-A\-D}!include.h@{include.\-h}}
+\subsubsection[{F\-\_\-\-H\-E\-A\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-\_\-\-H\-E\-A\-D~\char`\"{}\mbox{[}Desktop Entry\mbox{]}\textbackslash{}n\char`\"{}}}\label{include_8h_a750e8835a17b6ee46444370561e61073}
+
+
+Definition at line 45 of file include.\-h.
+
+\hypertarget{include_8h_a52a0a213071b3da600a05f6d6272add3}{\index{include.\-h@{include.\-h}!F\-\_\-\-I\-C\-O\-N@{F\-\_\-\-I\-C\-O\-N}}
+\index{F\-\_\-\-I\-C\-O\-N@{F\-\_\-\-I\-C\-O\-N}!include.h@{include.\-h}}
+\subsubsection[{F\-\_\-\-I\-C\-O\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-\_\-\-I\-C\-O\-N~\char`\"{}Icon=\char`\"{}}}\label{include_8h_a52a0a213071b3da600a05f6d6272add3}
+
+
+Definition at line 49 of file include.\-h.
+
+\hypertarget{include_8h_a9c0aa1f4715bb32583eadc59c3dabe50}{\index{include.\-h@{include.\-h}!F\-\_\-\-L\-E\-N\-\_\-\-C\-O\-M\-M@{F\-\_\-\-L\-E\-N\-\_\-\-C\-O\-M\-M}}
+\index{F\-\_\-\-L\-E\-N\-\_\-\-C\-O\-M\-M@{F\-\_\-\-L\-E\-N\-\_\-\-C\-O\-M\-M}!include.h@{include.\-h}}
+\subsubsection[{F\-\_\-\-L\-E\-N\-\_\-\-C\-O\-M\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-\_\-\-L\-E\-N\-\_\-\-C\-O\-M\-M~1024}}\label{include_8h_a9c0aa1f4715bb32583eadc59c3dabe50}
+
+
+Definition at line 54 of file include.\-h.
+
+\hypertarget{include_8h_ac2bfdb8881c8ce56b7d6d779007c9e89}{\index{include.\-h@{include.\-h}!F\-\_\-\-L\-E\-N\-\_\-\-C\-T\-E\-G@{F\-\_\-\-L\-E\-N\-\_\-\-C\-T\-E\-G}}
+\index{F\-\_\-\-L\-E\-N\-\_\-\-C\-T\-E\-G@{F\-\_\-\-L\-E\-N\-\_\-\-C\-T\-E\-G}!include.h@{include.\-h}}
+\subsubsection[{F\-\_\-\-L\-E\-N\-\_\-\-C\-T\-E\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-\_\-\-L\-E\-N\-\_\-\-C\-T\-E\-G~28}}\label{include_8h_ac2bfdb8881c8ce56b7d6d779007c9e89}
+
+
+Definition at line 56 of file include.\-h.
+
+\hypertarget{include_8h_a4d27e2aaf15863cdc020a72264660e3f}{\index{include.\-h@{include.\-h}!F\-\_\-\-L\-E\-N\-\_\-\-T\-Y\-P\-E@{F\-\_\-\-L\-E\-N\-\_\-\-T\-Y\-P\-E}}
+\index{F\-\_\-\-L\-E\-N\-\_\-\-T\-Y\-P\-E@{F\-\_\-\-L\-E\-N\-\_\-\-T\-Y\-P\-E}!include.h@{include.\-h}}
+\subsubsection[{F\-\_\-\-L\-E\-N\-\_\-\-T\-Y\-P\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-\_\-\-L\-E\-N\-\_\-\-T\-Y\-P\-E~28}}\label{include_8h_a4d27e2aaf15863cdc020a72264660e3f}
+
+
+Definition at line 55 of file include.\-h.
+
+\hypertarget{include_8h_aed896104ed4a9b852e7819de5555e05a}{\index{include.\-h@{include.\-h}!F\-\_\-\-N\-A\-M\-E@{F\-\_\-\-N\-A\-M\-E}}
+\index{F\-\_\-\-N\-A\-M\-E@{F\-\_\-\-N\-A\-M\-E}!include.h@{include.\-h}}
+\subsubsection[{F\-\_\-\-N\-A\-M\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-\_\-\-N\-A\-M\-E~\char`\"{}Name=\char`\"{}}}\label{include_8h_aed896104ed4a9b852e7819de5555e05a}
+
+
+Definition at line 46 of file include.\-h.
+
+\hypertarget{include_8h_a9447d2dee6d78829b317d86905fc12ab}{\index{include.\-h@{include.\-h}!F\-\_\-\-T\-E\-R\-M@{F\-\_\-\-T\-E\-R\-M}}
+\index{F\-\_\-\-T\-E\-R\-M@{F\-\_\-\-T\-E\-R\-M}!include.h@{include.\-h}}
+\subsubsection[{F\-\_\-\-T\-E\-R\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-\_\-\-T\-E\-R\-M~\char`\"{}Terminal=\char`\"{}}}\label{include_8h_a9447d2dee6d78829b317d86905fc12ab}
+
+
+Definition at line 50 of file include.\-h.
+
+\hypertarget{include_8h_a97508f041e42f64005162b87a77ca365}{\index{include.\-h@{include.\-h}!F\-\_\-\-T\-Y\-P\-E@{F\-\_\-\-T\-Y\-P\-E}}
+\index{F\-\_\-\-T\-Y\-P\-E@{F\-\_\-\-T\-Y\-P\-E}!include.h@{include.\-h}}
+\subsubsection[{F\-\_\-\-T\-Y\-P\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-\_\-\-T\-Y\-P\-E~\char`\"{}Type=\char`\"{}}}\label{include_8h_a97508f041e42f64005162b87a77ca365}
+
+
+Definition at line 51 of file include.\-h.
 
 \hypertarget{include_8h_afe9af64ddff174e1b6e96db45b8f78fb}{\index{include.\-h@{include.\-h}!F\-I\-L\-E\-\_\-\-T\-Y\-P\-E@{F\-I\-L\-E\-\_\-\-T\-Y\-P\-E}}
 \index{F\-I\-L\-E\-\_\-\-T\-Y\-P\-E@{F\-I\-L\-E\-\_\-\-T\-Y\-P\-E}!include.h@{include.\-h}}
 \subsubsection[{F\-I\-L\-E\-\_\-\-T\-Y\-P\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-I\-L\-E\-\_\-\-T\-Y\-P\-E~\char`\"{}.desktop\char`\"{}}}\label{include_8h_afe9af64ddff174e1b6e96db45b8f78fb}
 
 
-Definition at line 23 of file include.\-h.
+Definition at line 30 of file include.\-h.
 
 \hypertarget{include_8h_ae9c269d4570557a7210cde498fa59776}{\index{include.\-h@{include.\-h}!P\-E\-R\-R\-\_\-\-A\-P\-P@{P\-E\-R\-R\-\_\-\-A\-P\-P}}
 \index{P\-E\-R\-R\-\_\-\-A\-P\-P@{P\-E\-R\-R\-\_\-\-A\-P\-P}!include.h@{include.\-h}}
 \subsubsection[{P\-E\-R\-R\-\_\-\-A\-P\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-E\-R\-R\-\_\-\-A\-P\-P~\char`\"{}\mbox{[}\char`\"{}{\bf A\-P\-P\-\_\-\-N\-A\-M\-E}\char`\"{}\mbox{]}\-:\char`\"{}}}\label{include_8h_ae9c269d4570557a7210cde498fa59776}
 
 
-Definition at line 27 of file include.\-h.
+Definition at line 34 of file include.\-h.
 
 
 
@@ -131,14 +236,14 @@ Definition at line 27 of file include.\-h.
 \subsubsection[{desklink\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf desklink\-\_\-t} {\bf desklink\-\_\-t}}}\label{include_8h_a67f1628a77c3e3d9b7b4bfab34f285c0}
 
 
-Definition at line 61 of file include.\-h.
+Definition at line 95 of file include.\-h.
 
 \hypertarget{include_8h_a100f6a2b29defda137b746ea76214835}{\index{include.\-h@{include.\-h}!Input\-Flags\-Enum@{Input\-Flags\-Enum}}
 \index{Input\-Flags\-Enum@{Input\-Flags\-Enum}!include.h@{include.\-h}}
 \subsubsection[{Input\-Flags\-Enum}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf Input\-Flags\-Enum} {\bf Input\-Flags\-Enum}}}\label{include_8h_a100f6a2b29defda137b746ea76214835}
 
 
-Definition at line 46 of file include.\-h.
+Definition at line 76 of file include.\-h.
 
 
 
@@ -149,11 +254,7 @@ Definition at line 46 of file include.\-h.
 \begin{Desc}
 \item[Enumerator]\par
 \begin{description}
-\index{V\-E\-R\-S\-I\-O\-N@{V\-E\-R\-S\-I\-O\-N}!include.\-h@{include.\-h}}\index{include.\-h@{include.\-h}!V\-E\-R\-S\-I\-O\-N@{V\-E\-R\-S\-I\-O\-N}}\item[{\em 
-\hypertarget{include_8h_ae3cad780b8f3f34297941ce383b8a287a52f49aba124a600ad9581caabe6a099a}{V\-E\-R\-S\-I\-O\-N}\label{include_8h_ae3cad780b8f3f34297941ce383b8a287a52f49aba124a600ad9581caabe6a099a}
-}]\index{H\-E\-L\-P@{H\-E\-L\-P}!include.\-h@{include.\-h}}\index{include.\-h@{include.\-h}!H\-E\-L\-P@{H\-E\-L\-P}}\item[{\em 
-\hypertarget{include_8h_ae3cad780b8f3f34297941ce383b8a287a9f5cb747b2e1f0ea781d2b1f2a5b4824}{H\-E\-L\-P}\label{include_8h_ae3cad780b8f3f34297941ce383b8a287a9f5cb747b2e1f0ea781d2b1f2a5b4824}
-}]\index{N\-A\-M\-E@{N\-A\-M\-E}!include.\-h@{include.\-h}}\index{include.\-h@{include.\-h}!N\-A\-M\-E@{N\-A\-M\-E}}\item[{\em 
+\index{N\-A\-M\-E@{N\-A\-M\-E}!include.\-h@{include.\-h}}\index{include.\-h@{include.\-h}!N\-A\-M\-E@{N\-A\-M\-E}}\item[{\em 
 \hypertarget{include_8h_ae3cad780b8f3f34297941ce383b8a287a67bc2ced260a8e43805d2480a785d312}{N\-A\-M\-E}\label{include_8h_ae3cad780b8f3f34297941ce383b8a287a67bc2ced260a8e43805d2480a785d312}
 }]\index{P\-A\-T\-H@{P\-A\-T\-H}!include.\-h@{include.\-h}}\index{include.\-h@{include.\-h}!P\-A\-T\-H@{P\-A\-T\-H}}\item[{\em 
 \hypertarget{include_8h_ae3cad780b8f3f34297941ce383b8a287ad67a493278074cf714b262b33d84739c}{P\-A\-T\-H}\label{include_8h_ae3cad780b8f3f34297941ce383b8a287ad67a493278074cf714b262b33d84739c}
@@ -161,11 +262,17 @@ Definition at line 46 of file include.\-h.
 \hypertarget{include_8h_ae3cad780b8f3f34297941ce383b8a287a3501d25cdde2b141c20edb67965fb692}{I\-M\-A\-G\-E}\label{include_8h_ae3cad780b8f3f34297941ce383b8a287a3501d25cdde2b141c20edb67965fb692}
 }]\index{E\-D\-I\-T\-O\-R@{E\-D\-I\-T\-O\-R}!include.\-h@{include.\-h}}\index{include.\-h@{include.\-h}!E\-D\-I\-T\-O\-R@{E\-D\-I\-T\-O\-R}}\item[{\em 
 \hypertarget{include_8h_ae3cad780b8f3f34297941ce383b8a287acd88c7ae2b15e95f236caae09eaa1f56}{E\-D\-I\-T\-O\-R}\label{include_8h_ae3cad780b8f3f34297941ce383b8a287acd88c7ae2b15e95f236caae09eaa1f56}
-}]\index{U\-O\-N\-L\-Y@{U\-O\-N\-L\-Y}!include.\-h@{include.\-h}}\index{include.\-h@{include.\-h}!U\-O\-N\-L\-Y@{U\-O\-N\-L\-Y}}\item[{\em 
-\hypertarget{include_8h_ae3cad780b8f3f34297941ce383b8a287acf141e491d895049464a65af48db6548}{U\-O\-N\-L\-Y}\label{include_8h_ae3cad780b8f3f34297941ce383b8a287acf141e491d895049464a65af48db6548}
+}]\index{A\-L\-L\-U@{A\-L\-L\-U}!include.\-h@{include.\-h}}\index{include.\-h@{include.\-h}!A\-L\-L\-U@{A\-L\-L\-U}}\item[{\em 
+\hypertarget{include_8h_ae3cad780b8f3f34297941ce383b8a287ad00f62ef6f1aeb1cd475e9450830f293}{A\-L\-L\-U}\label{include_8h_ae3cad780b8f3f34297941ce383b8a287ad00f62ef6f1aeb1cd475e9450830f293}
+}]\index{T\-E\-R\-M@{T\-E\-R\-M}!include.\-h@{include.\-h}}\index{include.\-h@{include.\-h}!T\-E\-R\-M@{T\-E\-R\-M}}\item[{\em 
+\hypertarget{include_8h_ae3cad780b8f3f34297941ce383b8a287a14be5bd58406c94aefa8ef452857a432}{T\-E\-R\-M}\label{include_8h_ae3cad780b8f3f34297941ce383b8a287a14be5bd58406c94aefa8ef452857a432}
+}]\index{R\-E\-M\-V@{R\-E\-M\-V}!include.\-h@{include.\-h}}\index{include.\-h@{include.\-h}!R\-E\-M\-V@{R\-E\-M\-V}}\item[{\em 
+\hypertarget{include_8h_ae3cad780b8f3f34297941ce383b8a287a06a3a26f2796d9443740ac586351c87b}{R\-E\-M\-V}\label{include_8h_ae3cad780b8f3f34297941ce383b8a287a06a3a26f2796d9443740ac586351c87b}
+}]\index{S\-R\-C\-H@{S\-R\-C\-H}!include.\-h@{include.\-h}}\index{include.\-h@{include.\-h}!S\-R\-C\-H@{S\-R\-C\-H}}\item[{\em 
+\hypertarget{include_8h_ae3cad780b8f3f34297941ce383b8a287a6e8623178c4e7a9db6aed4db75f8bd07}{S\-R\-C\-H}\label{include_8h_ae3cad780b8f3f34297941ce383b8a287a6e8623178c4e7a9db6aed4db75f8bd07}
 }]\end{description}
 \end{Desc}
 
 
-Definition at line 35 of file include.\-h.
+Definition at line 64 of file include.\-h.
 

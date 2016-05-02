@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['createlinkfile',['createLinkFile',['../mkdeskli_8c.html#ac7019ab1e7d3d56836cb88dbe000e5fe',1,'mkdeskli.c']]]
+  ['createlaunchfile',['createLaunchFile',['../mkdeskli_8c.html#a8538a937556436f65c2ac03ec76520ce',1,'mkdeskli.c']]]
 ];

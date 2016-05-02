@@ -11,6 +11,7 @@
 
 #include <unistd.h>     //POSIX Standard: 2.10 Symbolic Constants
 #include <getopt.h>
+#include <dirent.h>
 
 #include <limits.h>     //ISO C99 Standard: 7.10/5.2.4.2.1 Sizes of integer types
 //-----------------------------------------------------
@@ -25,15 +26,15 @@
 //app info
 #define APP_VERSION     "0.0.2"
 #define APP_DATE        "2016"
-#define APP_NAME        "MkDeskLi"
+#define APP_NAME        "denman"
 #define FILE_TYPE       ".desktop"
-#define DESKT_DIR       "/usr/share/applications/"
+#define DESKT_DIR       "/usr/share/applications"
 #define DESKT_DIR_USR   "/.local/share/applications"
 //-----------------------------------------------------
 #define PERR_APP        "["APP_NAME"]:"
 //-----------------------------------------------------
 //launcher templite
-/*        fprintf(fp, "[Desktop Entry]\n");
+/*       fprintf(fp, "[Desktop Entry]\n");
         fprintf(fp, "Name=%s\n", desklink.name);
         fprintf(fp, "Comment=%s\n", desklink.name);
         fprintf(fp, "Exec=%s\n", desklink.appPath);
@@ -68,7 +69,8 @@ enum InputFlagsEnum
     EDITOR,
     ALLU,
     TERM,
-    REMV
+    REMV,
+    SRCH
 };
 
 typedef enum InputFlagsEnum InputFlagsEnum;

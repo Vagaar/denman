@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['main',['main',['../mkdeskli_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'mkdeskli.c']]],
-  ['mkdeskli_2ec',['mkdeskli.c',['../mkdeskli_8c.html',1,'']]]
+  ['name',['name',['../structdesklink__t.html#aff78ef2e29eaf6152f7586605dff6feb',1,'desklink_t::name()'],['../include_8h.html#ae3cad780b8f3f34297941ce383b8a287a67bc2ced260a8e43805d2480a785d312',1,'NAME():&#160;include.h']]]
 ];

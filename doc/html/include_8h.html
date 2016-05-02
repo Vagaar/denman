@@ -101,7 +101,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;string.h&gt;</code><br/>
 <code>#include &lt;unistd.h&gt;</code><br/>
 <code>#include &lt;getopt.h&gt;</code><br/>
+<code>#include &lt;dirent.h&gt;</code><br/>
 <code>#include &lt;limits.h&gt;</code><br/>
+<code>#include &lt;sys/types.h&gt;</code><br/>
+<code>#include &lt;sys/stat.h&gt;</code><br/>
+<code>#include &lt;fcntl.h&gt;</code><br/>
+<code>#include &lt;sys/errno.h&gt;</code><br/>
 </div>
 <p><a href="include_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -112,7 +117,7 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a92673e33f27532767749b79edb8ef806"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_8h.html#a92673e33f27532767749b79edb8ef806">APP_VERSION</a>&#160;&#160;&#160;&quot;0.0.1&quot;</td></tr>
+<tr class="memitem:a92673e33f27532767749b79edb8ef806"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_8h.html#a92673e33f27532767749b79edb8ef806">APP_VERSION</a>&#160;&#160;&#160;&quot;0.0.2&quot;</td></tr>
 <tr class="separator:a92673e33f27532767749b79edb8ef806"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab00c3385a7887d28167e5db5cc2e77bd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_8h.html#ab00c3385a7887d28167e5db5cc2e77bd">APP_DATE</a>&#160;&#160;&#160;&quot;2016&quot;</td></tr>
 <tr class="separator:ab00c3385a7887d28167e5db5cc2e77bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,12 +125,34 @@ Macros</h2></td></tr>
 <tr class="separator:af0b5cfa4242ae7f98ba80fd23ef8afa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe9af64ddff174e1b6e96db45b8f78fb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_8h.html#afe9af64ddff174e1b6e96db45b8f78fb">FILE_TYPE</a>&#160;&#160;&#160;&quot;.desktop&quot;</td></tr>
 <tr class="separator:afe9af64ddff174e1b6e96db45b8f78fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d94dde4c08a0d4b9b56f22dc91dce13"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_8h.html#a1d94dde4c08a0d4b9b56f22dc91dce13">DESKT_DIR</a>&#160;&#160;&#160;&quot;/home/sliderdv/temp&quot;</td></tr>
+<tr class="memitem:a1d94dde4c08a0d4b9b56f22dc91dce13"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_8h.html#a1d94dde4c08a0d4b9b56f22dc91dce13">DESKT_DIR</a>&#160;&#160;&#160;&quot;/usr/share/applications&quot;</td></tr>
 <tr class="separator:a1d94dde4c08a0d4b9b56f22dc91dce13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8015444b5a34bc5d2140a2a4342a2b9a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_8h.html#a8015444b5a34bc5d2140a2a4342a2b9a">DESKT_DIR_USR</a>&#160;&#160;&#160;&quot;&quot;</td></tr>
+<tr class="memitem:a8015444b5a34bc5d2140a2a4342a2b9a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_8h.html#a8015444b5a34bc5d2140a2a4342a2b9a">DESKT_DIR_USR</a>&#160;&#160;&#160;&quot;/.local/share/applications&quot;</td></tr>
 <tr class="separator:a8015444b5a34bc5d2140a2a4342a2b9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9c269d4570557a7210cde498fa59776"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_8h.html#ae9c269d4570557a7210cde498fa59776">PERR_APP</a>&#160;&#160;&#160;&quot;[&quot;<a class="el" href="include_8h.html#af0b5cfa4242ae7f98ba80fd23ef8afa9">APP_NAME</a>&quot;]:&quot;</td></tr>
 <tr class="separator:ae9c269d4570557a7210cde498fa59776"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a750e8835a17b6ee46444370561e61073"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_8h.html#a750e8835a17b6ee46444370561e61073">F_HEAD</a>&#160;&#160;&#160;&quot;[Desktop Entry]\n&quot;</td></tr>
+<tr class="separator:a750e8835a17b6ee46444370561e61073"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed896104ed4a9b852e7819de5555e05a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_8h.html#aed896104ed4a9b852e7819de5555e05a">F_NAME</a>&#160;&#160;&#160;&quot;Name=&quot;</td></tr>
+<tr class="separator:aed896104ed4a9b852e7819de5555e05a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0b49fd2872deb7e4d254d041d00175c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_8h.html#aa0b49fd2872deb7e4d254d041d00175c">F_COMM</a>&#160;&#160;&#160;&quot;Comment=&quot;</td></tr>
+<tr class="separator:aa0b49fd2872deb7e4d254d041d00175c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8478f945b974056ed3b97b6e546dd23"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_8h.html#ac8478f945b974056ed3b97b6e546dd23">F_EXEC</a>&#160;&#160;&#160;&quot;Exec=&quot;</td></tr>
+<tr class="separator:ac8478f945b974056ed3b97b6e546dd23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52a0a213071b3da600a05f6d6272add3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_8h.html#a52a0a213071b3da600a05f6d6272add3">F_ICON</a>&#160;&#160;&#160;&quot;Icon=&quot;</td></tr>
+<tr class="separator:a52a0a213071b3da600a05f6d6272add3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9447d2dee6d78829b317d86905fc12ab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_8h.html#a9447d2dee6d78829b317d86905fc12ab">F_TERM</a>&#160;&#160;&#160;&quot;Terminal=&quot;</td></tr>
+<tr class="separator:a9447d2dee6d78829b317d86905fc12ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97508f041e42f64005162b87a77ca365"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_8h.html#a97508f041e42f64005162b87a77ca365">F_TYPE</a>&#160;&#160;&#160;&quot;Type=&quot;</td></tr>
+<tr class="separator:a97508f041e42f64005162b87a77ca365"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a127240b0f91e7ac4079f2b82fd414844"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_8h.html#a127240b0f91e7ac4079f2b82fd414844">F_CTEG</a>&#160;&#160;&#160;&quot;Categories=&quot;</td></tr>
+<tr class="separator:a127240b0f91e7ac4079f2b82fd414844"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c0aa1f4715bb32583eadc59c3dabe50"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_8h.html#a9c0aa1f4715bb32583eadc59c3dabe50">F_LEN_COMM</a>&#160;&#160;&#160;1024</td></tr>
+<tr class="separator:a9c0aa1f4715bb32583eadc59c3dabe50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d27e2aaf15863cdc020a72264660e3f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_8h.html#a4d27e2aaf15863cdc020a72264660e3f">F_LEN_TYPE</a>&#160;&#160;&#160;28</td></tr>
+<tr class="separator:a4d27e2aaf15863cdc020a72264660e3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2bfdb8881c8ce56b7d6d779007c9e89"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_8h.html#ac2bfdb8881c8ce56b7d6d779007c9e89">F_LEN_CTEG</a>&#160;&#160;&#160;28</td></tr>
+<tr class="separator:ac2bfdb8881c8ce56b7d6d779007c9e89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -137,14 +164,15 @@ Typedefs</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:ae3cad780b8f3f34297941ce383b8a287"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287">InputFlagsEnum</a> { <br/>
-&#160;&#160;<a class="el" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287a52f49aba124a600ad9581caabe6a099a">VERSION</a> = 0, 
-<a class="el" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287a9f5cb747b2e1f0ea781d2b1f2a5b4824">HELP</a>, 
-<a class="el" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287a67bc2ced260a8e43805d2480a785d312">NAME</a>, 
+&#160;&#160;<a class="el" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287a67bc2ced260a8e43805d2480a785d312">NAME</a> =0, 
 <a class="el" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287ad67a493278074cf714b262b33d84739c">PATH</a>, 
-<br/>
-&#160;&#160;<a class="el" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287a3501d25cdde2b141c20edb67965fb692">IMAGE</a>, 
+<a class="el" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287a3501d25cdde2b141c20edb67965fb692">IMAGE</a>, 
 <a class="el" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287acd88c7ae2b15e95f236caae09eaa1f56">EDITOR</a>, 
-<a class="el" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287acf141e491d895049464a65af48db6548">UONLY</a>
+<br/>
+&#160;&#160;<a class="el" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287ad00f62ef6f1aeb1cd475e9450830f293">ALLU</a>, 
+<a class="el" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287a14be5bd58406c94aefa8ef452857a432">TERM</a>, 
+<a class="el" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287a06a3a26f2796d9443740ac586351c87b">REMV</a>, 
+<a class="el" href="include_8h.html#ae3cad780b8f3f34297941ce383b8a287a6e8623178c4e7a9db6aed4db75f8bd07">SRCH</a>
 <br/>
  }</td></tr>
 <tr class="separator:ae3cad780b8f3f34297941ce383b8a287"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -169,7 +197,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="include_8h_source.html#l00021">21</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
+<p>Definition at line <a class="el" href="include_8h_source.html#l00028">28</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
 
 </div>
 </div>
@@ -183,7 +211,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="include_8h_source.html#l00022">22</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
+<p>Definition at line <a class="el" href="include_8h_source.html#l00029">29</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
 
 </div>
 </div>
@@ -192,12 +220,12 @@ Enumerations</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define APP_VERSION&#160;&#160;&#160;&quot;0.0.1&quot;</td>
+          <td class="memname">#define APP_VERSION&#160;&#160;&#160;&quot;0.0.2&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="include_8h_source.html#l00020">20</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
+<p>Definition at line <a class="el" href="include_8h_source.html#l00027">27</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
 
 </div>
 </div>
@@ -206,12 +234,12 @@ Enumerations</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define DESKT_DIR&#160;&#160;&#160;&quot;/home/sliderdv/temp&quot;</td>
+          <td class="memname">#define DESKT_DIR&#160;&#160;&#160;&quot;/usr/share/applications&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="include_8h_source.html#l00024">24</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
+<p>Definition at line <a class="el" href="include_8h_source.html#l00031">31</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
 
 </div>
 </div>
@@ -220,12 +248,166 @@ Enumerations</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define DESKT_DIR_USR&#160;&#160;&#160;&quot;&quot;</td>
+          <td class="memname">#define DESKT_DIR_USR&#160;&#160;&#160;&quot;/.local/share/applications&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="include_8h_source.html#l00025">25</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
+<p>Definition at line <a class="el" href="include_8h_source.html#l00032">32</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa0b49fd2872deb7e4d254d041d00175c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define F_COMM&#160;&#160;&#160;&quot;Comment=&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="include_8h_source.html#l00047">47</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a127240b0f91e7ac4079f2b82fd414844"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define F_CTEG&#160;&#160;&#160;&quot;Categories=&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="include_8h_source.html#l00052">52</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac8478f945b974056ed3b97b6e546dd23"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define F_EXEC&#160;&#160;&#160;&quot;Exec=&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="include_8h_source.html#l00048">48</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a750e8835a17b6ee46444370561e61073"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define F_HEAD&#160;&#160;&#160;&quot;[Desktop Entry]\n&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="include_8h_source.html#l00045">45</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a52a0a213071b3da600a05f6d6272add3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define F_ICON&#160;&#160;&#160;&quot;Icon=&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="include_8h_source.html#l00049">49</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9c0aa1f4715bb32583eadc59c3dabe50"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define F_LEN_COMM&#160;&#160;&#160;1024</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="include_8h_source.html#l00054">54</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac2bfdb8881c8ce56b7d6d779007c9e89"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define F_LEN_CTEG&#160;&#160;&#160;28</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="include_8h_source.html#l00056">56</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4d27e2aaf15863cdc020a72264660e3f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define F_LEN_TYPE&#160;&#160;&#160;28</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="include_8h_source.html#l00055">55</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aed896104ed4a9b852e7819de5555e05a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define F_NAME&#160;&#160;&#160;&quot;Name=&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="include_8h_source.html#l00046">46</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9447d2dee6d78829b317d86905fc12ab"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define F_TERM&#160;&#160;&#160;&quot;Terminal=&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="include_8h_source.html#l00050">50</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a97508f041e42f64005162b87a77ca365"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define F_TYPE&#160;&#160;&#160;&quot;Type=&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="include_8h_source.html#l00051">51</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
 
 </div>
 </div>
@@ -239,7 +421,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="include_8h_source.html#l00023">23</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
+<p>Definition at line <a class="el" href="include_8h_source.html#l00030">30</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
 
 </div>
 </div>
@@ -253,7 +435,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="include_8h_source.html#l00027">27</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
+<p>Definition at line <a class="el" href="include_8h_source.html#l00034">34</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
 
 </div>
 </div>
@@ -268,7 +450,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="include_8h_source.html#l00061">61</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
+<p>Definition at line <a class="el" href="include_8h_source.html#l00095">95</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
 
 </div>
 </div>
@@ -282,7 +464,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="include_8h_source.html#l00046">46</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
+<p>Definition at line <a class="el" href="include_8h_source.html#l00076">76</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
 
 </div>
 </div>
@@ -297,11 +479,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="ae3cad780b8f3f34297941ce383b8a287a52f49aba124a600ad9581caabe6a099a"></a>VERSION</em>&#160;</td><td class="fielddoc">
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="ae3cad780b8f3f34297941ce383b8a287a9f5cb747b2e1f0ea781d2b1f2a5b4824"></a>HELP</em>&#160;</td><td class="fielddoc">
-</td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="ae3cad780b8f3f34297941ce383b8a287a67bc2ced260a8e43805d2480a785d312"></a>NAME</em>&#160;</td><td class="fielddoc">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="ae3cad780b8f3f34297941ce383b8a287a67bc2ced260a8e43805d2480a785d312"></a>NAME</em>&#160;</td><td class="fielddoc">
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="ae3cad780b8f3f34297941ce383b8a287ad67a493278074cf714b262b33d84739c"></a>PATH</em>&#160;</td><td class="fielddoc">
 </td></tr>
@@ -309,18 +487,24 @@ Enumerations</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="ae3cad780b8f3f34297941ce383b8a287acd88c7ae2b15e95f236caae09eaa1f56"></a>EDITOR</em>&#160;</td><td class="fielddoc">
 </td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="ae3cad780b8f3f34297941ce383b8a287acf141e491d895049464a65af48db6548"></a>UONLY</em>&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><em><a class="anchor" id="ae3cad780b8f3f34297941ce383b8a287ad00f62ef6f1aeb1cd475e9450830f293"></a>ALLU</em>&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ae3cad780b8f3f34297941ce383b8a287a14be5bd58406c94aefa8ef452857a432"></a>TERM</em>&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ae3cad780b8f3f34297941ce383b8a287a06a3a26f2796d9443740ac586351c87b"></a>REMV</em>&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="ae3cad780b8f3f34297941ce383b8a287a6e8623178c4e7a9db6aed4db75f8bd07"></a>SRCH</em>&#160;</td><td class="fielddoc">
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="include_8h_source.html#l00035">35</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
+<p>Definition at line <a class="el" href="include_8h_source.html#l00064">64</a> of file <a class="el" href="include_8h_source.html">include.h</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 29 2016 22:04:56 for mkdeskli by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 2 2016 20:36:03 for mkdeskli by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

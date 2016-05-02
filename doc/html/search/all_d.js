@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['version',['VERSION',['../include_8h.html#ae3cad780b8f3f34297941ce383b8a287a52f49aba124a600ad9581caabe6a099a',1,'include.h']]]
+  ['useexteditor',['useExtEditor',['../mkdeskli_8c.html#adfb97b9995a0fb9563494eef7b0615ae',1,'mkdeskli.c']]]
 ];
