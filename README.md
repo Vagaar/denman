@@ -3,6 +3,7 @@ Desktop Entry Manager (denman)
 Desktop Entry Manager (denman) - Linux command line tool that can help you manage desktop menu launchers.
 
 Main goals:
+
 1. Craete desktop entry
 2. Remove selected entry
 3. Search entry with keyword
