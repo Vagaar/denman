@@ -8,7 +8,7 @@ Desktop Entry Manager (denman)
 5. Autoremove invalid entry
 
 
-Build&Instalation
+Build&Installation
 =================
 
     $: make
