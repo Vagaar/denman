@@ -4,7 +4,7 @@ Desktop Entry Manager (denman) - Linux command line tool that can help you manag
 
 Main goals:
 
-1. Craete desktop entry
+1. Create desktop entry
 2. Remove selected entry
 3. Search entry with keyword
 4. Make entry enable/disable
@@ -12,7 +12,7 @@ Main goals:
 
 
 Build&Installation
-=================
+==================
 
     $: make
     $: sudo make install
